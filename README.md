@@ -19,11 +19,11 @@ lal = require('lal');
 #### input:
 - `input.ip {string}`: IP to lookup
 - `input.host {string}`: Preferred host. options:
-   - 'ip-api'- ip-api.com (default)
-   - 'freegeoip'- freegeoip.net
-   - 'ipapi' - ipapi.co
-   - 'extreme' - extreme-ip-lookup.com
-   - 'ipinfo' - ipinfo.io/
+   - `'ip-api'` ip-api.com (default)
+   - `'freegeoip'` freegeoip.net
+   - `'ipapi'` ipapi.co
+   - `'extreme'` extreme-ip-lookup.com
+   - `'ipinfo'` ipinfo.io
 
 #### output:
 - `err`: error callback
