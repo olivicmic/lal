@@ -1,6 +1,6 @@
 {
   "name": "lal",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Assorted utilities for NodeJS",
   "main": "index.js",
   "scripts": {
@@ -27,5 +27,8 @@
     "gulp-refresh": "^1.1.0",
     "mocha": "^4.0.0",
     "run-sequence": "^2.2.0"
+  },
+  "dependencies": {
+    "request": "^2.83.0"
   }
 }

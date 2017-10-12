@@ -1,6 +1,27 @@
 'use strict';
 
-exports.dateFormat = function () {
+var request = require('request');
+
+var lookupIP = function (input, output) {
+	var lookup;
+	if (!input.ip) return output({ error: 'No IP provided' }, null);
+	if (!input.host || input.host === 'ip-api') lookup = 'http://ip-api.com/json/' + input.ip;
+	else if (input.host === 'freegeoip') lookup = 'http://freegeoip.net/json/' + input.ip;
+	else if (input.host === 'ipapi') lookup = 'https://ipapi.co/' + input.ip + '/json';
+	else if (input.host === 'extreme') lookup = 'http://extreme-ip-lookup.com/json/' + input.ip;
+	else if (input.host === 'ipinfo') lookup = 'https://ipinfo.io/' + input.ip + '/json';
+	else return output({ error: 'Invalid host' }, null);
+
+	request(lookup, function (err, res, body) {
+		if (err) return output(err, null);
+
+		var result = JSON.parse(body);
+
+		return output(null, result);
+	});
+};
+
+var dateFormat = function () {
 	var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		time = new Date(),
 		day = time.getDate(),
@@ -26,7 +47,7 @@ exports.dateFormat = function () {
 };
 
 
-exports.byteFormat = function (bytes, decimals) {
+var byteFormat = function (bytes, decimals) {
 	if (bytes === 0 || !bytes) return '0 Byte';
 	var units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
 		decLength = decimals || 0,
@@ -39,3 +60,7 @@ exports.byteFormat = function (bytes, decimals) {
 
   	return byteString;
 };
+
+exports.lookupIP = lookupIP;
+exports.dateFormat = dateFormat;
+exports.byteFormat = byteFormat;
