@@ -1,6 +1,7 @@
 'use strict';
 
-var request = require('request');
+var request = require('request'),
+	hexColorRegex = require('hex-color-regex');
 
 var lookupIP = function (input, output) {
 	var lookup;
@@ -61,6 +62,16 @@ var byteFormat = function (bytes, decimals) {
   	return byteString;
 };
 
+var hexSetCheck = function (arr) {
+	var result = [];
+	for (var i = 0; i < arr.length; i++) {
+		if (hexColorRegex({ strict: true }).test(arr[i])) result.push(true);
+		else result.push(false);
+	}
+	return result;
+};
+
 exports.lookupIP = lookupIP;
 exports.dateFormat = dateFormat;
 exports.byteFormat = byteFormat;
+exports.hexSetCheck = hexSetCheck;

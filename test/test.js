@@ -88,6 +88,7 @@ describe('Testing lal.byteFormat', function () {
 	});
 });
 
+/*
 describe('Testing lal.lookupIP', function () {
 	var testIP = '208.80.152.201';
 
@@ -139,5 +140,45 @@ describe('Testing lal.lookupIP', function () {
 			expect(result.country).to.equal('US');
 			done();
 		});
+	});
+});
+*/
+
+describe('Testing lal.hexSetCheck', function () {
+	it('3rd value should be false', function (done) {
+		var testArr = ['#89f', '#c7c7c7', '090cff', '#ddd'],
+			colorTest = lal.hexSetCheck(testArr);
+
+		console.log('test array:');
+		console.log(testArr);
+		console.log('result array:');
+		console.log(colorTest);
+		expect(colorTest[2]).to.equal(false);
+		done();
+
+	});
+
+	it('No value should be false', function (done) {
+		var testArr = ['#a9a9a9', '#810059', '#333', '#783455', '#699'],
+			colorTest = lal.hexSetCheck(testArr);
+
+		console.log('test array:');
+		console.log(testArr);
+		console.log('result array:');
+		console.log(colorTest);
+		expect(colorTest).to.not.include(false);
+		done();
+	});
+
+	it('All should be false', function (done) {
+		var testArr = [592288, 'red', true],
+			colorTest = lal.hexSetCheck(testArr);
+
+		console.log('test array:');
+		console.log(testArr);
+		console.log('result array:');
+		console.log(colorTest);
+		expect(colorTest).to.not.include(true);
+		done();
 	});
 });

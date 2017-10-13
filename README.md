@@ -73,6 +73,18 @@ lal.byteFormat(56739,1);
 // Will return a string: '56.7 KB'
 ```
 
+### hexSetCheck
+
+Will validate an array of color hex values using [hex-color-regex](https://github.com/regexhq/hex-color-regex) returning an array with corresponding true/false values.
+
+```Javascript
+
+lal.hexSetCheck(['#89f', '#c7c7c7', '090cff', '#ddd']);
+
+// Will return [ true, true, false, true ]
+
+```
+
 ## Tests
 
 `npm test`
