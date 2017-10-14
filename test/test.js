@@ -180,3 +180,77 @@ describe('Testing lal.hexSetCheck', () => {
 		done();
 	});
 });
+
+describe('Testing lal.generateUnique', () => {
+	it('Should generate a random 6 character string.', (done) => {
+		var rando = lal.generateUnique();
+		console.log(rando);
+		expect(rando.length).to.equal(6);
+		expect(typeof rando).to.equal('string');
+		done();
+	});
+
+	it('Should generate a random 20 character string.', (done) => {
+		var rando = lal.generateUnique({ charCount: 20 });
+		console.log(rando);
+		expect(rando.length).to.equal(20);
+		expect(typeof rando).to.equal('string');
+		done();
+	});
+
+	it('Should generate a random 20 character string with only \'abc\' characters.', (done) => {
+		var rando = lal.generateUnique({
+			charCount: 20,
+			charSet: 'abc'
+		});
+		console.log(rando);
+		expect(rando.length).to.equal(20);
+		expect(rando.indexOf('d')).to.equal(-1);
+		expect(rando.indexOf('9')).to.equal(-1);
+		expect(rando.indexOf('!')).to.equal(-1);
+		done();
+	});
+
+	it('Should be form new string from string array.', (done) => {
+		var rando = lal.generateUnique({
+			charCount: 10,
+			charSet: [
+				'Apple',
+				'Donut',
+				'Banana',
+				'Pizza',
+				'Grape',
+				'Cherry',
+				'Taco',
+				'Grape',
+				'Sandiwch',
+				'Orange',
+				'Spaghetti',
+				'Salad',
+				'Sushi',
+				'Pho',
+				'Tangerine',
+				'Bacon'
+			]
+		});
+		console.log(rando);
+		expect(rando.length).to.be.above(30);
+		console.log('\x07');
+		done();
+	});
+
+	it('Should generate random string that does not match any in array.', (done) => {
+		var testAgainst = ['mzw', 'pxk', 'kvz', '6rd', 'gqg', '2r4', 'abq'],
+			rando = lal.generateUnique({
+				charCount: 3,
+				existing: testAgainst
+			});
+
+		console.log('Test set:');
+		console.log(testAgainst);
+		console.log(rando);
+		expect(rando.length).to.equal(3);
+		expect(testAgainst.indexOf(rando)).to.equal(-1);
+		done();
+	});
+});

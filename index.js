@@ -3,11 +3,53 @@
 var request = require('request'),
 	hexColorRegex = require('hex-color-regex');
 
-
+exports.generateUnique = generateUnique;
 exports.lookupIP = lookupIP;
 exports.dateFormat = dateFormat;
 exports.byteFormat = byteFormat;
 exports.hexSetCheck = hexSetCheck;
+
+function generateUnique(input) {
+	if (!input) input = {};
+	if (!input.existing) input.existing = [];
+	if (!input.charCount) input.charCount = 6;
+	if (!input.charSet || typeof input.charSet != 'string' && !Array.isArray(input.charSet))
+		input.charSet = '23456789abdegjkmnpqrvwxyz';
+
+
+	var id = '',
+		retries = 0,
+		uniqueRetries = 9999;
+
+	if (input.existing.length > 0) {
+		while (!id && retries < uniqueRetries) {
+			id = generate(input);
+			if (input.existing.indexOf(id) !== -1) {
+				id = null;
+				retries++;
+			}
+		}
+	} else id = generate(input);
+
+	return id;
+}
+
+function generate(input) {
+	var tiny = '',
+		randomIndex = () => Math.floor(Math.random() * input.charSet.length);
+
+	if (Array.isArray(input.charSet)) {
+		for (var i = 0; i < input.charCount; i++) {
+			tiny += input.charSet[randomIndex()];
+		}
+	} else {
+		for (var i = 0; i < input.charCount; i++) {
+			tiny += input.charSet.charAt(randomIndex());
+		}
+	}
+
+	return tiny;
+}
 
 function lookupIP(input, output) {
 	var lookup;
@@ -74,3 +116,4 @@ function hexSetCheck(arr) {
 	}
 	return result;
 }
+

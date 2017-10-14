@@ -13,6 +13,53 @@ Include:
 lal = require('lal');
 ```
 
+### generateUnique
+
+Will generate a string of random characters, and can be checked against existing strings. It by default uses this alphabet but can use a custom alphabet or array of strings.
+
+- `input.charSet {string || array}`: Alphabet to generate from or an array of strings.
+- `input.charCount {number}`: string length, or amount of words in a single string if charSet is an array.
+- `input.existing {number}`: an array of existing strings to test against so that returned string is unique.
+
+```Javascript
+
+lal.generateUnique();
+
+// Will return something 6 character string like: 'pg99xy'
+
+lal.generateUnique({ charCount: 20 });
+
+// Will return something 20 character string like: 'gm4vex56vpqmqj22mkdq'
+
+lal.generateUnique({ charSet: 'abc' });
+
+// Will return something 6 character string like: 'cbabba'
+
+var myWords = charSet: [
+	'Apple',
+	'Donut',
+	'Banana',
+	'Pizza',
+	'Grape',
+	'Cherry',
+	'Taco',
+	'Grape',
+	'Sandiwch',
+	'Orange',
+	'Spaghetti',
+	'Salad',
+	'Sushi',
+	'Pho',
+	'Tangerine',
+	'Bacon'
+];
+
+lal.generateUnique({ charCount: 10, charSet: myWords });
+
+// Will return something 6 character string like: 'GrapePizzaAppleDonutSpaghettiBananaPizzaCherryGrapeDonut'
+
+```
+
 ### lookupIP
 `lal.lookupIP(input, output)`
 
