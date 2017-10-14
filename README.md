@@ -19,21 +19,29 @@ Will generate a string of random characters, and can be checked against existing
 
 - `input.charSet {string || array}`: Alphabet to generate from or an array of strings.
 - `input.charCount {number}`: string length, or amount of words in a single string if charSet is an array.
-- `input.existing {number}`: an array of existing strings to test against so that returned string is unique.
+- `input.existing {array}`: an array of existing strings to test against so that returned string is unique.
 
 ```Javascript
 
-lal.generateUnique();
+var unique = lal.generateUnique(input);
 
-// Will return something 6 character string like: 'pg99xy'
+console.log(unique);
+
+// Will return a 6 character string like: 'pg99xy'
 
 lal.generateUnique({ charCount: 20 });
 
-// Will return something 20 character string like: 'gm4vex56vpqmqj22mkdq'
+// Will return a 20 character string like: 'gm4vex56vpqmqj22mkdq'
 
 lal.generateUnique({ charSet: 'abc' });
 
-// Will return something 6 character string like: 'cbabba'
+// Will return a 6 character string like: 'cbabba'
+
+testSet = [ 'mzw', 'pxk', 'kvz', '6rd', 'gqg', '2r4', 'abq' ];
+
+lal.generateUnique({ charCount: 3, existing: testSet });
+
+// Will return a 3 character unique from testSet strings like: 'yv4'
 
 var myWords = charSet: [
 	'Apple',
@@ -54,9 +62,9 @@ var myWords = charSet: [
 	'Bacon'
 ];
 
-lal.generateUnique({ charCount: 10, charSet: myWords });
+lal.generateUnique({ charCount: 4, charSet: myWords });
 
-// Will return something 6 character string like: 'GrapePizzaAppleDonutSpaghettiBananaPizzaCherryGrapeDonut'
+// Will return something 6 character string like: 'GrapePizzaAppleDonut'
 
 ```
 
