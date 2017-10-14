@@ -6,8 +6,8 @@ var chai = require('chai'),
 	lal = require('../index'),
 	monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-describe('Testing lal.dateFormat', function () {
-	it('should return a pretty date', function (done) {
+describe('Testing lal.dateFormat', () => {
+	it('should return a pretty date', (done) => {
 		var date = lal.dateFormat(),
 			dateArr = date.split('_'),
 			time = new Date(),
@@ -33,8 +33,8 @@ describe('Testing lal.dateFormat', function () {
 	});
 });
 
-describe('Testing lal.byteFormat', function () {
-	it('should return \'0 Byte\'', function (done) {
+describe('Testing lal.byteFormat', () => {
+	it('should return \'0 Byte\'', (done) => {
 		var result = lal.byteFormat();
 		console.log('Bytes: none');
 		console.log('Decimals: none');
@@ -43,7 +43,7 @@ describe('Testing lal.byteFormat', function () {
 		done();
 	});
 
-	it('should return \'0 Byte\'', function (done) {
+	it('should return \'0 Byte\'', (done) => {
 		var result = lal.byteFormat(0, 0);
 		console.log('Bytes: 0');
 		console.log('Decimals: 0');
@@ -52,7 +52,7 @@ describe('Testing lal.byteFormat', function () {
 		done();
 	});
 
-	it('should return \'347 Bytes\'', function (done) {
+	it('should return \'347 Bytes\'', (done) => {
 		var result = lal.byteFormat(347);
 		console.log('Bytes: 347');
 		console.log('Returns: ' + result);
@@ -60,7 +60,7 @@ describe('Testing lal.byteFormat', function () {
 		done();
 	});
 
-	it('should return \'56.7 KB\'', function (done) {
+	it('should return \'56.7 KB\'', (done) => {
 		var result = lal.byteFormat(56739, 1);
 		console.log('Bytes: 56739');
 		console.log('Decimals: 1');
@@ -69,7 +69,7 @@ describe('Testing lal.byteFormat', function () {
 		done();
 	});
 
-	it('should return \'9.81 MB\'', function (done) {
+	it('should return \'9.81 MB\'', (done) => {
 		var result = lal.byteFormat(9812734, 2);
 		console.log('Bytes: 9812734');
 		console.log('Decimals: 2');
@@ -78,7 +78,7 @@ describe('Testing lal.byteFormat', function () {
 		done();
 	});
 
-	it('should return \'75.20139417 GB\'', function (done) {
+	it('should return \'75.20139417 GB\'', (done) => {
 		var result = lal.byteFormat(75201394166, 8);
 		console.log('Bytes: 75201394166');
 		console.log('Decimals: 8');
@@ -88,12 +88,11 @@ describe('Testing lal.byteFormat', function () {
 	});
 });
 
-/*
-describe('Testing lal.lookupIP', function () {
+describe('Testing lal.lookupIP', () => {
 	var testIP = '208.80.152.201';
 
-	it('should return object with status property with \'success\' value', function (done) {
-		lal.lookupIP({ ip: testIP }, function (err, result) {
+	it('should return object with status property with \'success\' value', (done) => {
+		lal.lookupIP({ ip: testIP }, (err, result) => {
 			if (err) return done(err);
 			console.log('http://ip-api.com/json/' + testIP);
 			console.log(result);
@@ -102,8 +101,8 @@ describe('Testing lal.lookupIP', function () {
 		});
 	});
 
-	it('should return object with country_code property with \'US\' value', function (done) {
-		lal.lookupIP({ ip: testIP, host: 'freegeoip' }, function (err, result) {
+	it('should return object with country_code property with \'US\' value', (done) => {
+		lal.lookupIP({ ip: testIP, host: 'freegeoip' }, (err, result) => {
 			if (err) return done(err);
 			console.log('http://freegeoip.net/json/' + testIP);
 			console.log(result);
@@ -112,8 +111,8 @@ describe('Testing lal.lookupIP', function () {
 		});
 	});
 
-	it('should return object with country property with \'US\' value', function (done) {
-		lal.lookupIP({ ip: testIP, host: 'ipapi' }, function (err, result) {
+	it('should return object with country property with \'US\' value', (done) => {
+		lal.lookupIP({ ip: testIP, host: 'ipapi' }, (err, result) => {
 			if (err) return done(err);
 			console.log('https://ipapi.co/' + testIP +'/json/');
 			console.log(result);
@@ -122,8 +121,8 @@ describe('Testing lal.lookupIP', function () {
 		});
 	});
 
-	it('should return object with countryCode property with \'US\' value', function (done) {
-		lal.lookupIP({ ip: testIP, host: 'extreme' }, function (err, result) {
+	it('should return object with countryCode property with \'US\' value', (done) => {
+		lal.lookupIP({ ip: testIP, host: 'extreme' }, (err, result) => {
 			if (err) return done(err);
 			console.log('http://extreme-ip-lookup.com/json/' + testIP);
 			console.log(result);
@@ -132,8 +131,8 @@ describe('Testing lal.lookupIP', function () {
 		});
 	});
 
-	it('should return object with country property with \'US\' value', function (done) {
-		lal.lookupIP({ ip: testIP, host: 'ipinfo' }, function (err, result) {
+	it('should return object with country property with \'US\' value', (done) => {
+		lal.lookupIP({ ip: testIP, host: 'ipinfo' }, (err, result) => {
 			if (err) return done(err);
 			console.log('https://ipinfo.io/' + testIP + '/json');
 			console.log(result);
@@ -142,10 +141,9 @@ describe('Testing lal.lookupIP', function () {
 		});
 	});
 });
-*/
 
-describe('Testing lal.hexSetCheck', function () {
-	it('3rd value should be false', function (done) {
+describe('Testing lal.hexSetCheck', () => {
+	it('3rd value should be false', (done) => {
 		var testArr = ['#89f', '#c7c7c7', '090cff', '#ddd'],
 			colorTest = lal.hexSetCheck(testArr);
 
@@ -158,7 +156,7 @@ describe('Testing lal.hexSetCheck', function () {
 
 	});
 
-	it('No value should be false', function (done) {
+	it('No value should be false', (done) => {
 		var testArr = ['#a9a9a9', '#810059', '#333', '#783455', '#699'],
 			colorTest = lal.hexSetCheck(testArr);
 
@@ -170,7 +168,7 @@ describe('Testing lal.hexSetCheck', function () {
 		done();
 	});
 
-	it('All should be false', function (done) {
+	it('All should be false', (done) => {
 		var testArr = [592288, 'red', true],
 			colorTest = lal.hexSetCheck(testArr);
 

@@ -3,7 +3,13 @@
 var request = require('request'),
 	hexColorRegex = require('hex-color-regex');
 
-var lookupIP = function (input, output) {
+
+exports.lookupIP = lookupIP;
+exports.dateFormat = dateFormat;
+exports.byteFormat = byteFormat;
+exports.hexSetCheck = hexSetCheck;
+
+function lookupIP(input, output) {
 	var lookup;
 	if (!input.ip) return output({ error: 'No IP provided' }, null);
 	if (!input.host || input.host === 'ip-api') lookup = 'http://ip-api.com/json/' + input.ip;
@@ -13,16 +19,16 @@ var lookupIP = function (input, output) {
 	else if (input.host === 'ipinfo') lookup = 'https://ipinfo.io/' + input.ip + '/json';
 	else return output({ error: 'Invalid host' }, null);
 
-	request(lookup, function (err, res, body) {
+	request(lookup, (err, res, body) => {
 		if (err) return output(err, null);
 
 		var result = JSON.parse(body);
 
 		return output(null, result);
 	});
-};
+}
 
-var dateFormat = function () {
+function dateFormat() {
 	var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		time = new Date(),
 		day = time.getDate(),
@@ -33,11 +39,9 @@ var dateFormat = function () {
 		month = monthArr[mm],
 		minPad = '';
 
-	if (min < 10) {
-		minPad = 0;
-	}
+	if (min < 10) minPad = 0;
 
-	var clock = function () {
+	var clock = () => {
 		if (hr >= 12) {
 			var hour = hr - 12;
 			return hour + '.' + min + '_' + 'PM';
@@ -45,10 +49,10 @@ var dateFormat = function () {
 		return hr + '.' + minPad + min + '_' +'AM';
 	};
 	return month + '_' + day + '_' + year + '_' + clock();
-};
+}
 
 
-var byteFormat = function (bytes, decimals) {
+function byteFormat(bytes, decimals) {
 	if (bytes === 0 || !bytes) return '0 Byte';
 	var units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
 		decLength = decimals || 0,
@@ -60,18 +64,13 @@ var byteFormat = function (bytes, decimals) {
   		byteString = byteValue + ' ' + units[relativeScale];
 
   	return byteString;
-};
+}
 
-var hexSetCheck = function (arr) {
+function hexSetCheck(arr) {
 	var result = [];
 	for (var i = 0; i < arr.length; i++) {
 		if (hexColorRegex({ strict: true }).test(arr[i])) result.push(true);
 		else result.push(false);
 	}
 	return result;
-};
-
-exports.lookupIP = lookupIP;
-exports.dateFormat = dateFormat;
-exports.byteFormat = byteFormat;
-exports.hexSetCheck = hexSetCheck;
+}

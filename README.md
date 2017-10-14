@@ -30,7 +30,7 @@ lal = require('lal');
 - `result`: ip lookup json object. Properties vary depending on host selected.
 
 ```Javascript
-lal.lookupIP({ ip: '208.80.152.201', host: 'extreme'}, function(err, result) {
+lal.lookupIP({ ip: '208.80.152.201', host: 'extreme'}, (err, result) => {
 	if (err) console.log(err); // returns error details
 	console.log(result);
 });
