@@ -20,6 +20,11 @@ Will generate a string of random characters, and can be checked against existing
 - `input.charSet {string || array}`: Alphabet to generate from or an array of strings.
 - `input.charCount {number}`: string length, or amount of words in a single string if charSet is an array.
 - `input.existing {array}`: an array of existing strings to test against so that returned string is unique.
+- `input.whiteSpace {boolean}`: Will add spaces between characters or words.
+- `input.sentences {string}`: Will add sentence capitalization, with commas and punctuation to string. Will only work for an array charSet
+- `input.preset {string}`: Use an optional preset dictionary array or alpahabet string for charSet. Values:
+   - `'lorem ipsum'` uses 'greek'/lorem ipsum dictionary array.
+   - `'hex'` uses '0123456789abcdef' hex alpahabet.
 
 ```Javascript
 
@@ -64,7 +69,16 @@ var myWords = charSet: [
 
 lal.generateUnique({ charCount: 4, charSet: myWords });
 
-// Will return something 6 character string like: 'GrapePizzaAppleDonut'
+// Will return a 6 character string like: 'GrapePizzaAppleDonut'
+
+lal.generateUnique({ charCount: 30, whiteSpace: true, preset: 'lorem ipsum', sentences: true });
+
+// Will return a string like: 
+// 'Fugiat tempor, occaecat excepteur qui qui pariatur. Velit nulla lorem ullamco nostrud. Est nulla nostrud? Quis est cillum ex ut officia id aute, reprehenderit, consequat tempor elit eu anim. Qui!'
+
+lal.generateUnique({ charCount: 6, preset: 'hex' });
+
+// Will return a string like: '207e67'
 
 ```
 

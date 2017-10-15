@@ -3,7 +3,9 @@
 var chai = require('chai'),
 	expect = chai.expect,
 	assert = chai.assert,
+	hexColorRegex = require('hex-color-regex'),
 	lal = require('../index'),
+	lorem = require('../lorem-ipsum'),
 	monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 describe('Testing lal.dateFormat', () => {
@@ -182,6 +184,8 @@ describe('Testing lal.hexSetCheck', () => {
 });
 
 describe('Testing lal.generateUnique', () => {
+	var wordSet = ['Apple', 'Donut', 'Banana', 'Pizza', 'Grape', 'Cherry', 'Taco', 'Grape', 'Sandiwch', 'Orange', 'Spaghetti', 'Salad', 'Sushi', 'Pho', 'Tangerine', 'Bacon'];
+
 	it('Should generate a random 6 character string.', (done) => {
 		var rando = lal.generateUnique();
 		console.log(rando);
@@ -214,24 +218,7 @@ describe('Testing lal.generateUnique', () => {
 	it('Should be form new string from string array.', (done) => {
 		var rando = lal.generateUnique({
 			charCount: 10,
-			charSet: [
-				'Apple',
-				'Donut',
-				'Banana',
-				'Pizza',
-				'Grape',
-				'Cherry',
-				'Taco',
-				'Grape',
-				'Sandiwch',
-				'Orange',
-				'Spaghetti',
-				'Salad',
-				'Sushi',
-				'Pho',
-				'Tangerine',
-				'Bacon'
-			]
+			charSet: wordSet
 		});
 		console.log(rando);
 		expect(rando.length).to.be.above(30);
@@ -251,6 +238,56 @@ describe('Testing lal.generateUnique', () => {
 		console.log(rando);
 		expect(rando.length).to.equal(3);
 		expect(testAgainst.indexOf(rando)).to.equal(-1);
+		done();
+	});
+
+	it('Should generate random string with white space', (done) => {
+		var rando = lal.generateUnique({
+			charCount: 10,
+			whiteSpace: true
+		});
+
+		console.log('Test set:');
+		console.log(rando);
+		expect(rando.charAt(1)).to.equal(' ');
+		expect(rando.charAt(3)).to.equal(' ');
+		expect(rando.charAt(5)).to.equal(' ');
+		expect(rando.charAt(7)).to.equal(' ');
+		expect(rando.charAt(9)).to.equal(' ');
+		expect(rando.charAt(11)).to.equal(' ');
+		expect(rando.charAt(13)).to.equal(' ');
+		expect(rando.charAt(15)).to.equal(' ');
+		expect(rando.charAt(17)).to.equal(' ');
+		done();
+	});
+
+	it('Should generate a lorem ipsum string', (done) => {
+		var rando = lal.generateUnique({
+				charCount: 30,
+				whiteSpace: true,
+				preset: 'lorem ipsum',
+				sentences: true
+			}),
+			randoSize = rando.length - 1,
+			punctuations = ['.', '?', '!'];
+
+		console.log('Test set:');
+		console.log(rando);
+		expect(rando.length).to.be.above(120);
+		expect(punctuations.indexOf(rando.charAt(randoSize))).to.be.above(-1);
+		done();
+	});
+
+	it('Should generate a valid random hex code', (done) => {
+		var rando = lal.generateUnique({
+			charCount: 6,
+			preset: 'hex'
+		});
+
+		console.log('Test set:');
+		console.log(rando);
+		expect(hexColorRegex({ strict: true }).test('#' + rando)).to.be.true;
+		expect(rando.length).to.equal(6);
 		done();
 	});
 });
