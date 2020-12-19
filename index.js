@@ -1,11 +1,11 @@
 'use strict';
 
-var request = require('request'),
-	hexColorRegex = require('hex-color-regex'),
+var hexColorRegex = require('hex-color-regex'),
+	LookupIP = require('./modules/LookupIP'),
 	lorem = require('./lorem-ipsum');
 
 exports.generateUnique = generateUnique;
-exports.lookupIP = lookupIP;
+exports.lookupIP = LookupIP;
 exports.dateFormat = dateFormat;
 exports.byteFormat = byteFormat;
 exports.hexSetCheck = hexSetCheck;
@@ -19,7 +19,6 @@ function generateUnique(input) {
 	if (input.whiteSpace) input.charCount *= 2;
 	if (!input.preset && !input.charSet || typeof input.charSet != 'string' && !Array.isArray(input.charSet))
 		input.charSet = '23456789abdegjkmnpqrvwxyz';
-
 
 	var id = '',
 		retries = 0,
@@ -90,25 +89,6 @@ function isEven(value) {
 	else return false;
 }
 
-function lookupIP(input, output) {
-	var lookup;
-	if (!input.ip) return output({ error: 'No IP provided' }, null);
-	if (!input.host || input.host === 'ip-api') lookup = 'http://ip-api.com/json/' + input.ip;
-	else if (input.host === 'freegeoip') lookup = 'http://freegeoip.net/json/' + input.ip;
-	else if (input.host === 'ipapi') lookup = 'https://ipapi.co/' + input.ip + '/json';
-	else if (input.host === 'extreme') lookup = 'http://extreme-ip-lookup.com/json/' + input.ip;
-	else if (input.host === 'ipinfo') lookup = 'https://ipinfo.io/' + input.ip + '/json';
-	else return output({ error: 'Invalid host' }, null);
-
-	request(lookup, (err, res, body) => {
-		if (err) return output(err, null);
-
-		var result = JSON.parse(body);
-
-		return output(null, result);
-	});
-}
-
 function dateFormat() {
 	var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		time = new Date(),
@@ -132,9 +112,8 @@ function dateFormat() {
 	return month + '_' + day + '_' + year + '_' + clock();
 }
 
-
 function byteFormat(bytes, decimals) {
-	if (bytes === 0 || !bytes) return '0 Byte';
+	if (bytes === 0 || !bytes) return '0 Bytes';
 	var units = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
 		decLength = decimals || 0,
 		sizeScale = Math.log(bytes),

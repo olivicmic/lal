@@ -103,16 +103,6 @@ describe('Testing lal.lookupIP', () => {
 		});
 	});
 
-	it('should return object with country_code property with \'US\' value', (done) => {
-		lal.lookupIP({ ip: testIP, host: 'freegeoip' }, (err, result) => {
-			if (err) return done(err);
-			console.log('http://freegeoip.net/json/' + testIP);
-			console.log(result);
-			expect(result.country_code).to.equal('US');
-			done();
-		});
-	});
-
 	it('should return object with country property with \'US\' value', (done) => {
 		lal.lookupIP({ ip: testIP, host: 'ipapi' }, (err, result) => {
 			if (err) return done(err);

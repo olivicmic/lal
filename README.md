@@ -3,7 +3,7 @@ Assorted NodeJS Utilities
 
 ## Installation
 
-`npm install pic-pipe --save`
+`npm install lal --save`
 
 ## Usage
 
@@ -89,7 +89,6 @@ lal.generateUnique({ charCount: 6, preset: 'hex' });
 - `input.ip {string}`: IP to lookup
 - `input.host {string}`: Preferred host. options:
    - `'ip-api'` ip-api.com (default)
-   - `'freegeoip'` freegeoip.net
    - `'ipapi'` ipapi.co
    - `'extreme'` extreme-ip-lookup.com
    - `'ipinfo'` ipinfo.io
