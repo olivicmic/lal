@@ -135,7 +135,7 @@ lal.dateFormat();
 lal.byteFormat(*bytes*, *decimals*);
 
 lal.byteFormat();
-// Will return a string: '0 Byte'
+// Will return a string: '0 Bytes'
 
 lal.byteFormat(56739,1);
 // Will return a string: '56.7 KB'
@@ -150,6 +150,18 @@ Will validate an array of color hex values using [hex-color-regex](https://githu
 lal.hexSetCheck(['#89f', '#c7c7c7', '090cff', '#ddd']);
 
 // Will return [ true, true, false, true ]
+
+```
+
+### arrayList
+
+Will return any array as a string with each item seperarated by commas and an "and" before the last item. Single item arrays will be only that item. Empty arrays will return null.
+
+```Javascript
+
+lal.arrayList(['apple','banana','orange','watermelon']);
+
+// Will return 'apple, banana, orange and watermelon'
 
 ```
 

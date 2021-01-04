@@ -3,7 +3,7 @@ var mainFile = require('./index.js'),
 	plugins = require('gulp-load-plugins')();
 
 gulp.task('watch', function() {
-	gulp.watch(['**/*.js', '!node_modules/**'], gulp.series('eslint')).on('change', plugins.refresh.changed);
+	gulp.watch(['**/*.js', '!node_modules/**'], gulp.series('eslint'));
 });
 
 // ESLint JS linting task

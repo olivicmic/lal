@@ -4,12 +4,6 @@ var hexColorRegex = require('hex-color-regex'),
 	LookupIP = require('./modules/LookupIP'),
 	lorem = require('./lorem-ipsum');
 
-exports.generateUnique = generateUnique;
-exports.lookupIP = LookupIP;
-exports.dateFormat = dateFormat;
-exports.byteFormat = byteFormat;
-exports.hexSetCheck = hexSetCheck;
-
 function generateUnique(input) {
 	if (!input) input = {};
 	if (!input.existing) input.existing = [];
@@ -36,6 +30,8 @@ function generateUnique(input) {
 
 	return id;
 }
+
+const isEven = (input) => input % 2 === 0;
 
 function generate(input) {
 	var string = '',
@@ -84,11 +80,6 @@ function generate(input) {
 	return string;
 }
 
-function isEven(value) {
-	if (value % 2 === 0) return true;
-	else return false;
-}
-
 function dateFormat() {
 	var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 		time = new Date(),
@@ -126,12 +117,15 @@ function byteFormat(bytes, decimals) {
   	return byteString;
 }
 
-function hexSetCheck(arr) {
-	var result = [];
-	for (var i = 0; i < arr.length; i++) {
-		if (hexColorRegex({ strict: true }).test(arr[i])) result.push(true);
-		else result.push(false);
-	}
-	return result;
-}
+const hexSetCheck = (arr) => arr.map((color) => hexColorRegex({ strict: true}).test(color));
 
+const arrayList = (input) => (input.length <= 0) ? null :
+	(input.length === 1) ? input[0] :
+		input.slice(0, input.length - 1).join(', ') + ' and ' + input.slice(input.length - 1);
+
+exports.generateUnique = generateUnique;
+exports.lookupIP = LookupIP;
+exports.dateFormat = dateFormat;
+exports.byteFormat = byteFormat;
+exports.hexSetCheck = hexSetCheck;
+exports.arrayList = arrayList;

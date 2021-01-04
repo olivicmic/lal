@@ -36,21 +36,21 @@ describe('Testing lal.dateFormat', () => {
 });
 
 describe('Testing lal.byteFormat', () => {
-	it('should return \'0 Byte\'', (done) => {
+	it('should return \'0 Bytes\'', (done) => {
 		var result = lal.byteFormat();
 		console.log('Bytes: none');
 		console.log('Decimals: none');
 		console.log('Returns: ' + result);
-		expect(result).to.equal('0 Byte');
+		expect(result).to.equal('0 Bytes');
 		done();
 	});
 
-	it('should return \'0 Byte\'', (done) => {
+	it('should return \'0 Bytes\'', (done) => {
 		var result = lal.byteFormat(0, 0);
 		console.log('Bytes: 0');
 		console.log('Decimals: 0');
 		console.log('Returns: ' + result);
-		expect(result).to.equal('0 Byte');
+		expect(result).to.equal('0 Bytes');
 		done();
 	});
 
@@ -278,6 +278,29 @@ describe('Testing lal.generateUnique', () => {
 		console.log(rando);
 		expect(hexColorRegex({ strict: true }).test('#' + rando)).to.be.true;
 		expect(rando.length).to.equal(6);
+		done();
+	});
+});
+
+describe('Testing lal.arrayList', () => {
+	it('Should generate a list sentence string', (done) => {
+		let arrList = lal.arrayList(['apple', 'banana', 'orange', 'watermelon']);
+		console.log(arrList);
+		expect(arrList).to.equal('apple, banana, orange and watermelon');
+		done();
+	});
+
+	it('Should return a single word', (done) => {
+		let arrList = lal.arrayList(['apple']);
+		console.log(arrList);
+		expect(arrList).to.equal('apple');
+		done();
+	});
+
+	it('Should return null', (done) => {
+		let arrList = lal.arrayList([]);
+		console.log(arrList);
+		expect(arrList).to.equal(null);
 		done();
 	});
 });
