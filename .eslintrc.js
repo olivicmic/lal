@@ -2,7 +2,7 @@ module.exports = {
   rules: {
 	camelcase: 0,
 	'comma-dangle': [2, 'never'],
-	'comma-spacing': [2, { before: false, after: true }],
+	'comma-spacing': 0,
 	'consistent-return': 0,
 	curly: 0,
 	'default-case': 0,

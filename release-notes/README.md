@@ -1,8 +1,14 @@
-# Lal 1.1.0 Release Notes
+# Lal 1.3.0 Release Notes
+## January 5, 2021
+
+## New Features
+* **Expanded dateFormat function** - You can now pass a parameter object with "date" or  "truncate" properties. Date allows for static date objects to be inputted. Truncate is a boolean, that if true will produce a more concise  14 character string such as "010220210505PM".
+
+# Lal 1.2.0 Release Notes
 ## January 3, 2021
 
 ## New Features
-* **FreeGeoIP ip lookup removed** - Returns a string list seperated with proper commas and an "and" before the last item.
+* **Added array list function** - Returns a string list seperated with proper commas and an "and" before the last item.
 
 # Lal 1.0.0 Release Notes
 ## December 19, 2020

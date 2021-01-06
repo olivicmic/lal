@@ -125,9 +125,22 @@ result example:
 ```
 
 ### dateFormat
+`lal.dateFormat({ date: Date, truncate: true})`
+
+#### input:
+- `input.date {date object}`: IP to lookup
+- `input.truncate {boolean}`: Preferred host
+
+
 ```Javascript
 lal.dateFormat();
-// returns a date string like: Oct_4_2017_10.12_AM
+// returns the current date in a string like: Oct_4_2017_10.12_AM
+
+lal.dateFormat({date: new Date(Date.UTC(96, 1, 2, 3, 4, 5))});
+// returns Feb_1_1996_7.04_PM
+ 
+lal.dateFormat({truncate: true});
+// returns 010520210741PM 
 ```
 
 ### byteFormat

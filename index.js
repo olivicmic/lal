@@ -80,27 +80,25 @@ function generate(input) {
 	return string;
 }
 
-function dateFormat() {
-	var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-		time = new Date(),
-		day = time.getDate(),
-		mm = time.getMonth(),
-		year = time.getFullYear(),
-		hr = time.getHours(),
-		min = time.getMinutes(),
-		month = monthArr[mm],
-		minPad = '';
+function dateFormat(input) {
+	const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+		padNum = (num,add) => (num+add < 10) ? '0' + (num+add) : `${num+add}`;
 
-	if (min < 10) minPad = 0;
+	let max = (!input || !input.truncate),
+		date = (!input || !input.date) ? new Date() : input.date,
+		day = max ? date.getDate() : padNum(date.getDate(),0),
+		mm = date.getMonth(),
+		year = date.getFullYear(),
+		hour = date.getHours(),
+		eve = hour >= 12,
+		splitHour = eve ? hour - 12 : hour,
+		hr = eve ? max ? hour - 12 : padNum(hour - 12,0) : hour,
+		min = padNum(date.getMinutes(),0),
+		div = max ? '_' : '',
+		clock = `${hr}${max ? '.' : ''}${min}${div}${eve ? 'PM' : 'AM'}`,
+		month = max ? monthArr[mm] : padNum(mm,1);
 
-	var clock = () => {
-		if (hr >= 12) {
-			var hour = hr - 12;
-			return hour + '.' + min + '_' + 'PM';
-		}
-		return hr + '.' + minPad + min + '_' +'AM';
-	};
-	return month + '_' + day + '_' + year + '_' + clock();
+	return month + div + day + div + year + div + clock;
 }
 
 function byteFormat(bytes, decimals) {
