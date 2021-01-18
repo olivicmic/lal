@@ -1,11 +1,12 @@
 'use strict';
 
-var chai = require('chai'),
+const chai = require('chai'),
 	expect = chai.expect,
 	assert = chai.assert,
 	hexColorRegex = require('hex-color-regex'),
 	lal = require('../index'),
-	lorem = require('../lorem-ipsum'),
+	lorem = require('../resources/lorem-ipsum'),
+	chalk = require('chalk'),
 	monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 describe('Testing lal.dateFormat', () => {
@@ -315,6 +316,71 @@ describe('Testing lal.arrayList', () => {
 		let arrList = lal.arrayList([]);
 		console.log(arrList);
 		expect(arrList).to.equal(null);
+		done();
+	});
+});
+
+describe('Testing lal.isolateChannel', () => {
+	it('Should return max red only hex', (done) => {
+		let isolateRed = lal.isolateChannel({ channel: 0, color: 255});
+		console.log(chalk.hex(isolateRed)('returned color:', isolateRed));
+		expect(isolateRed).to.equal('#ff0000');
+		done();
+	});
+	it('Should return partial green only hex', (done) => {
+		let isolateGreen = lal.isolateChannel({ channel: 1, color: 128});
+		console.log(chalk.hex(isolateGreen)('returned color:', isolateGreen));
+		expect(isolateGreen).to.equal('#008000');
+		done();
+	});
+	it('Should return partial blue only hex', (done) => {
+		let isolateBlue = lal.isolateChannel({ channel: 2, color: 73});
+		console.log(chalk.hex(isolateBlue)('returned color:', isolateBlue));
+		expect(isolateBlue).to.equal('#000049');
+		done();
+	});
+	it('Should return black due to invalid channel', (done) => {
+		let isolateErr = lal.isolateChannel({ channel: 7, color: 99});
+		console.log(chalk.hex(isolateErr)('returned color:', isolateErr));
+		expect(isolateErr).to.equal('#000000');
+		done();
+	});
+});
+
+describe('Testing lal.random', () => {
+	it('Should return a random number from 0 to 10', (done) => {
+		let randomNum = lal.random();
+		console.log('random made:', randomNum);
+		expect(randomNum).to.be.above(-1);
+		expect(randomNum).to.be.below(11);
+		done();
+	});
+	it('Should return a random number from 0 to 300', (done) => {
+		let randomNum = lal.random(301);
+		console.log('random made:', randomNum);
+		expect(randomNum).to.be.above(-1);
+		expect(randomNum).to.be.below(301);
+		done();
+	});
+});
+
+describe('Testing lal.contrasted', () => {
+	it('Should return an object with accent and tone hex colors', (done) => {
+		let contrastObj = lal.contrasted({color: '#810059'});
+		console.log(contrastObj);
+		let contrastArr = [];
+		for (let color in contrastObj) {
+			contrastArr.push(contrastObj[color]);
+		};
+		let conTest = lal.hexSetCheck(contrastArr);
+		expect(conTest[0]).to.equal(true);
+		expect(conTest[1]).to.equal(true);
+		done();
+	});
+	it('Should return a new hex color', (done) => {
+		let contrastColor = lal.contrasted({color: '#ff0000', channel: 0});
+		console.log(chalk.hex(contrastColor)('returned color:', contrastColor));
+		expect(contrastColor).to.equal('#ff623c');
 		done();
 	});
 });
