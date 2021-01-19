@@ -1,1 +1,1 @@
-module.exports = (range) => Math.floor(Math.random() * (range ? range : 11));
+module.exports = (range) => Math.floor(Math.random() * (range ? (range + 1) : 11));

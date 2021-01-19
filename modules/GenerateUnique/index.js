@@ -1,18 +1,18 @@
 const lorem = require('../../resources/lorem-ipsum'),
-	Random = require('../Random');
+	random = require('../Random');
 
 const isEven = (input) => input % 2 === 0;
 
 const generate = (input) => {
 	var string = '',
-		chance = 10,
+		chance = 9,
 		capNext = false,
-		randomIndex = () => Random(input.charSet.length),
-		doPeriod = () => Random(chance),
+		randomIndex = () => random(input.charSet.length - 1),
+		doPeriod = () => random(chance),
 		modString = () => input.charSet[randomIndex()];
 
 	var punctuation = () => {
-		let puncRand = () => Random(14);
+		let puncRand = () => random(13);
 		if (puncRand() <= 10) return '.';
 		else if (puncRand() <= 11) return '!';
 		else return '?';

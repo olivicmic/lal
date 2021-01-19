@@ -356,7 +356,7 @@ describe('Testing lal.random', () => {
 		done();
 	});
 	it('Should return a random number from 0 to 300', (done) => {
-		let randomNum = lal.random(301);
+		let randomNum = lal.random(300);
 		console.log('random made:', randomNum);
 		expect(randomNum).to.be.above(-1);
 		expect(randomNum).to.be.below(301);
@@ -370,7 +370,7 @@ describe('Testing lal.contrasted', () => {
 		console.log(contrastObj);
 		let contrastArr = [];
 		for (let color in contrastObj) {
-			contrastArr.push(contrastObj[color]);
+			if (contrastObj[color]) contrastArr.push(contrastObj[color]);
 		};
 		let conTest = lal.hexSetCheck(contrastArr);
 		expect(conTest[0]).to.equal(true);

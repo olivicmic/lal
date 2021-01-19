@@ -178,6 +178,49 @@ lal.arrayList(['apple','banana','orange','watermelon']);
 
 ```
 
+### Contrasted
+
+Returns a color object with amn accent color that is dark or bright depending on the average value of the input color, as well as a color that is brightened at a decreasing amount depnding on the brightness of the base color.
+
+With a channel parameter it will return a single color intended to exagerate the saturation (or lack thereof) of a single channel color.
+
+```Javascript
+
+lal.contrasted({color: '#810059'});
+
+/* 
+  Return example:
+  {
+    accent: '#1f0000', // brightend or darken color based on the input color, in this case: dark
+    bright: '#bf4b90' // brightened version.
+  }
+*/
+
+lal.contrasted({color: '#ff0000', channel: 0});
+
+// returns #ff623c, blue colors
+// 
+// something like color: #00000d, channel: 2 returns a grayish #464753
+// 
+// though there is not the intended purpose, put in different colors and channels and see what happens!
+
+```
+
+### random
+Returns a random number between 0-10, or 0 to whatev er number parameter you specify. Nothing special or new.
+
+```Javascript
+
+lal.random();
+
+// Will 0 to 10
+
+lal.random(999);
+
+// Will 0 to 999
+
+```
+
 ## Tests
 
 `npm test`
