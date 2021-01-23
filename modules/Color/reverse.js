@@ -1,0 +1,1 @@
+module.exports = (value, floor) => Math.round(255 - ((255 - (floor ? floor : 0)) * ((value ? value : 255) / 255)));

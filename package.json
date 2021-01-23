@@ -1,11 +1,11 @@
 {
   "name": "lal",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Assorted useful Javascript function",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
-    "watch": "esw -w --color --ignore-pattern .eslintrc.js"
+    "watch": "esw -w --color --clear --ignore-pattern .eslintrc.js"
   },
   "engines": {
     "node": ">=6.10.0"

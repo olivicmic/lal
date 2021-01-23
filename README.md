@@ -154,13 +154,13 @@ lal.byteFormat(56739,1);
 // Will return a string: '56.7 KB'
 ```
 
-### hexSetCheck
+### checkHexs
 
 Will validate an array of color hex values using [hex-color-regex](https://github.com/regexhq/hex-color-regex) returning an array with corresponding true/false values.
 
 ```Javascript
 
-lal.hexSetCheck(['#89f', '#c7c7c7', '090cff', '#ddd']);
+lal.color.checkHexs(['#89f', '#c7c7c7', '090cff', '#ddd']);
 
 // Will return [ true, true, false, true ]
 
@@ -178,33 +178,6 @@ lal.arrayList(['apple','banana','orange','watermelon']);
 
 ```
 
-### Contrasted
-
-Returns a color object with amn accent color that is dark or bright depending on the average value of the input color, as well as a color that is brightened at a decreasing amount depnding on the brightness of the base color.
-
-With a channel parameter it will return a single color intended to exagerate the saturation (or lack thereof) of a single channel color.
-
-```Javascript
-
-lal.contrasted({color: '#810059'});
-
-/* 
-  Return example:
-  {
-    accent: '#1f0000', // brightend or darken color based on the input color, in this case: dark
-    bright: '#bf4b90' // brightened version.
-  }
-*/
-
-lal.contrasted({color: '#ff0000', channel: 0});
-
-// returns #ff623c, blue colors
-// 
-// something like color: #00000d, channel: 2 returns a grayish #464753
-// 
-// though there is not the intended purpose, put in different colors and channels and see what happens!
-
-```
 
 ### random
 Returns a random number between 0-10, or 0 to whatev er number parameter you specify. Nothing special or new.
@@ -218,6 +191,76 @@ lal.random();
 lal.random(999);
 
 // Will 0 to 999
+
+```
+
+## lal.color
+
+### accent
+
+Returns a color object with amn accent color that is dark or bright depending on the average value of the input color, as well as a color that is brightened at a decreasing amount depnding on the brightness of the base color.
+
+```Javascript
+
+lal.color.accent({color: '#810059'});
+
+/* 
+  Return example:
+  {
+    accent: '#1f0000', // brightend or darken color based on the input color, in this case: dark
+    bright: '#bf4b90' // brightened version.
+  }
+*/
+```
+### illuminate
+
+With a channel parameter it will return a single color intended to exagerate the saturation (or lack thereof) of a single channel color. Providing a floor param value will raise the brightness of the darkest color. With a limit param the brightness of a full color can be limited or increased. The range param, alongside floor can be used to scale value changes.
+
+```Javascript
+
+lal.color.illuminate({color: '#ff0000', channel: 0});
+
+// returns #ff623c, blue colors
+// 
+// something like color: #00000d, channel: 2 returns a grayish #464753
+// 
+// though there is not the intended purpose, put in different colors and channels and see what happens!
+```
+
+
+### checkHexs
+
+Will validate an array of color hex values using [hex-color-regex](https://github.com/regexhq/hex-color-regex) returning an array with corresponding true/false values.
+
+```Javascript
+
+lal.color.checkHexs(['#89f', '#c7c7c7', '090cff', '#ddd']);
+
+// Will return [ true, true, false, true ]
+
+```
+
+### solo
+
+Solo, when given the value of a single RGB channel will return a hex color with the input value assigned to specified channel.
+
+```Javascript
+
+lal.color.solo({ channel: 0, color: 255});
+
+// Will return #ff0000
+
+```
+
+### reverse
+
+Reverse takes a single 0-255 rgb channel value and returns the an opposite number. For example 0 returns 255, 255 returns 0. To set a lowest possible returned value, set a floor value in the second param.
+
+```Javascript
+
+lal.color.reverse(255, 24);
+
+// Will return 24;
 
 ```
 

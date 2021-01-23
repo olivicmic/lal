@@ -149,45 +149,6 @@ describe('Testing lal.lookupIP', () => {
 	});
 });
 
-describe('Testing lal.hexSetCheck', () => {
-	it('3rd value should be false', (done) => {
-		var testArr = ['#89f', '#c7c7c7', '090cff', '#ddd'],
-			colorTest = lal.hexSetCheck(testArr);
-
-		console.log('test array:');
-		console.log(testArr);
-		console.log('result array:');
-		console.log(colorTest);
-		expect(colorTest[2]).to.equal(false);
-		done();
-
-	});
-
-	it('No value should be false', (done) => {
-		var testArr = ['#a9a9a9', '#810059', '#333', '#783455', '#699'],
-			colorTest = lal.hexSetCheck(testArr);
-
-		console.log('test array:');
-		console.log(testArr);
-		console.log('result array:');
-		console.log(colorTest);
-		expect(colorTest).to.not.include(false);
-		done();
-	});
-
-	it('All should be false', (done) => {
-		var testArr = [592288, 'red', true],
-			colorTest = lal.hexSetCheck(testArr);
-
-		console.log('test array:');
-		console.log(testArr);
-		console.log('result array:');
-		console.log(colorTest);
-		expect(colorTest).to.not.include(true);
-		done();
-	});
-});
-
 describe('Testing lal.generateUnique', () => {
 	var wordSet = ['Apple', 'Donut', 'Banana', 'Pizza', 'Grape', 'Cherry', 'Taco', 'Grape', 'Sandiwch', 'Orange', 'Spaghetti', 'Salad', 'Sushi', 'Pho', 'Tangerine', 'Bacon'];
 
@@ -320,33 +281,6 @@ describe('Testing lal.arrayList', () => {
 	});
 });
 
-describe('Testing lal.isolateChannel', () => {
-	it('Should return max red only hex', (done) => {
-		let isolateRed = lal.isolateChannel({ channel: 0, color: 255});
-		console.log(chalk.hex(isolateRed)('returned color:', isolateRed));
-		expect(isolateRed).to.equal('#ff0000');
-		done();
-	});
-	it('Should return partial green only hex', (done) => {
-		let isolateGreen = lal.isolateChannel({ channel: 1, color: 128});
-		console.log(chalk.hex(isolateGreen)('returned color:', isolateGreen));
-		expect(isolateGreen).to.equal('#008000');
-		done();
-	});
-	it('Should return partial blue only hex', (done) => {
-		let isolateBlue = lal.isolateChannel({ channel: 2, color: 73});
-		console.log(chalk.hex(isolateBlue)('returned color:', isolateBlue));
-		expect(isolateBlue).to.equal('#000049');
-		done();
-	});
-	it('Should return black due to invalid channel', (done) => {
-		let isolateErr = lal.isolateChannel({ channel: 7, color: 99});
-		console.log(chalk.hex(isolateErr)('returned color:', isolateErr));
-		expect(isolateErr).to.equal('#000000');
-		done();
-	});
-});
-
 describe('Testing lal.random', () => {
 	it('Should return a random number from 0 to 10', (done) => {
 		let randomNum = lal.random();
@@ -364,23 +298,110 @@ describe('Testing lal.random', () => {
 	});
 });
 
-describe('Testing lal.contrasted', () => {
+describe('Testing lal.color.solo', () => {
+	it('Should return max red only hex', (done) => {
+		let isolateRed = lal.color.solo({ channel: 0, color: 255});
+		console.log(chalk.hex(isolateRed)('returned color:', isolateRed));
+		expect(isolateRed).to.equal('#ff0000');
+		done();
+	});
+	it('Should return partial green only hex', (done) => {
+		let isolateGreen = lal.color.solo({ channel: 1, color: 128});
+		console.log(chalk.hex(isolateGreen)('returned color:', isolateGreen));
+		expect(isolateGreen).to.equal('#008000');
+		done();
+	});
+	it('Should return partial blue only hex', (done) => {
+		let isolateBlue = lal.color.solo({ channel: 2, color: 73});
+		console.log(chalk.hex(isolateBlue)('returned color:', isolateBlue));
+		expect(isolateBlue).to.equal('#000049');
+		done();
+	});
+	it('Should return black due to invalid channel', (done) => {
+		let isolateErr = lal.color.solo({ channel: 7, color: 99});
+		console.log(chalk.hex(isolateErr)('returned color:', isolateErr));
+		expect(isolateErr).to.equal('#000000');
+		done();
+	});
+});
+
+describe('Testing lal.color.accent', () => {
 	it('Should return an object with accent and tone hex colors', (done) => {
-		let contrastObj = lal.contrasted({color: '#810059'});
+		let contrastObj = lal.color.accent({color: '#810059'});
 		console.log(contrastObj);
 		let contrastArr = [];
 		for (let color in contrastObj) {
 			if (contrastObj[color]) contrastArr.push(contrastObj[color]);
 		};
-		let conTest = lal.hexSetCheck(contrastArr);
+		let conTest = lal.color.checkHexs(contrastArr);
 		expect(conTest[0]).to.equal(true);
 		expect(conTest[1]).to.equal(true);
 		done();
 	});
+});
+
+describe('Testing lal.color.illuminate', () => {
 	it('Should return a new hex color', (done) => {
-		let contrastColor = lal.contrasted({color: '#ff0000', channel: 0});
+		let contrastColor = lal.color.illuminate({color: '#ff0000', channel: 0});
 		console.log(chalk.hex(contrastColor)('returned color:', contrastColor));
 		expect(contrastColor).to.equal('#ff623c');
+		done();
+	});
+	it('Should return a new hex color with ceiling param', (done) => {
+		let contrastColor = lal.color.illuminate({color: '#ff0000', channel: 0, ceiling: 200});
+		console.log(chalk.hex(contrastColor)('returned color:', contrastColor));
+		expect(contrastColor).to.equal('#ff4c2b');
+		done();
+	});
+	it('Should return a new hex color with floor param', (done) => {
+		let contrastColor = lal.color.illuminate({color: '#000000', channel: 0, floor: 66});
+		console.log(chalk.hex(contrastColor)('returned color:', contrastColor));
+		expect(contrastColor).to.equal('#838383');
+		done();
+	});
+	it('Should return a new hex color with range param', (done) => {
+		let contrastColor = lal.color.illuminate({color: '#800000', channel: 0, range: 255});
+		console.log(chalk.hex(contrastColor)('returned color:', contrastColor));
+		expect(contrastColor).to.equal('#e8583c');
+		done();
+	});
+});
+
+describe('Testing lal.color.checkHexs', () => {
+	it('3rd value should be false', (done) => {
+		var testArr = ['#89f', '#c7c7c7', '090cff', '#ddd'],
+			colorTest = lal.color.checkHexs(testArr);
+
+		console.log('test array:');
+		console.log(testArr);
+		console.log('result array:');
+		console.log(colorTest);
+		expect(colorTest[2]).to.equal(false);
+		done();
+
+	});
+
+	it('No value should be false', (done) => {
+		var testArr = ['#a9a9a9', '#810059', '#333', '#783455', '#699'],
+			colorTest = lal.color.checkHexs(testArr);
+
+		console.log('test array:');
+		console.log(testArr);
+		console.log('result array:');
+		console.log(colorTest);
+		expect(colorTest).to.not.include(false);
+		done();
+	});
+
+	it('All should be false', (done) => {
+		var testArr = [592288, 'red', true],
+			colorTest = lal.color.checkHexs(testArr);
+
+		console.log('test array:');
+		console.log(testArr);
+		console.log('result array:');
+		console.log(colorTest);
+		expect(colorTest).to.not.include(true);
 		done();
 	});
 });

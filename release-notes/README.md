@@ -1,5 +1,10 @@
-# Lal 2.0.0 Release Notes
+# Lal 3.0.0 Release Notes
 ## January 18, 2021
+
+## New Features
+* **Unified color functions under lal.color** - Exisitinng color functions are now called via lal.color and have been renamed. lal.contrasted has been split into lal.color.accent and lal.color.illuminate. lal.hexSetCheck is now lal.color.checkHexs. lal.isolateChannel is now lal.color.solo.
+
+* **Added lal.color.reverse** - lal.color.reverse can be given the value of a single rgb channel and it will return, an opposite value. For example giving 0 will return 255, 250 returns 0, but a floor param can given to raise the lowest returned value. For example a floor of 24 will return values from 24-255. 
 
 ## New Features
 * **Added contrasted function** - Contrasted is cosmetic function that when given a color will return colors intended to contrast against the input function. For example, a dark color will return an object with an 'accent' color that is much brighter, or vice-versa. Good for maintaining readability dynamically. The object also contain a 'bright' color which is brightened in a decreasing amount depending on the base color average value, which is good for subtle highlights.
