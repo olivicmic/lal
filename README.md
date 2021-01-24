@@ -266,13 +266,13 @@ lal.color.reverse(255, 24);
 
 ### reverseSolo
 
-The reverseSolo function returns a hex color, which the inverse of the provided value assign to the provied channel. If a target value is provided as the third parameter then, as the input value approaches 255, the other channels will increase to match.
+The reverseSolo function returns a hex color, which the inverse of the provided value assign to the provied channel. If a target value is provided as the third parameter then, as the input value approaches 255, the other channels will increase to match. A forth param can be set to define the maximum on the main channel.
 
 ```Javascript
 
 lal.color.reverseSolo(255);
 
-// Will return #000000, the inverse of the value;
+// Will return #000000, the inverse of the value, assigned to the red (0) channel by default);
 
 lal.color.reverseSolo(0,1);
 
@@ -281,6 +281,10 @@ lal.color.reverseSolo(0,1);
 lal.color.reverseSolo(255,2,23);
 
 // Will return #171717, the blue (2) channel will lower to the target value, while the other channels raise to the target value. The result being a 0 value produces the full color of selected value, and as the value increases it becomes desaturated.
+
+lal.color.reverseSolo(0,0,0,133);
+
+// The maximum for the red channel (0) will not exceed 133 or #850000
 
 ```
 
