@@ -1,5 +1,11 @@
+# Lal 3.0.1 Release Notes
+## January 23, 2021
+
+## New Features
+* **Added lal.color.reverseSolo** - lal.color.reverseSolo functions like lal.color.reverse but returns a hex color with the rverse value assigend to the designated channel param (0-2). If a target param is provided, the main channel will lower as the value increases to hit that target, while the other channels will raise to meet it. The result being an inverse desaturation effect.
+
 # Lal 3.0.0 Release Notes
-## January 18, 2021
+## January 22, 2021
 
 ## New Features
 * **Unified color functions under lal.color** - Exisitinng color functions are now called via lal.color and have been renamed. lal.contrasted has been split into lal.color.accent and lal.color.illuminate. lal.hexSetCheck is now lal.color.checkHexs. lal.isolateChannel is now lal.color.solo.

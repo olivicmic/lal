@@ -4,5 +4,6 @@ module.exports = {
 	checkHexs: require('./checkHexs'),
 	illuminate: require('./illuminate'),
 	reverse: require('./reverse'),
+	reverseSolo: require('./reverseSolo'),
 	solo: require('./solo')
 };

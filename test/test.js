@@ -405,3 +405,38 @@ describe('Testing lal.color.checkHexs', () => {
 		done();
 	});
 });
+
+describe('Testing lal.color.reverseSolo (uses lal.color.reverse) ', () => {
+
+	it('Should return red', (done) => {
+		let reversed = lal.color.reverseSolo();
+		console.log(chalk.hex('ff0000')('input: none (value, channel, & target undefined)'));
+		console.log(chalk.hex(reversed)('returned color:', reversed));
+		expect(reversed).to.equal('#ff0000');
+		done();
+	});
+
+	it('Should return a shade of green via channel param', (done) => {
+		let reversed = lal.color.reverseSolo(195,1);
+		console.log(chalk.hex('00ff00')('input: (value = 195, channel = 1, target = undefined)'));
+		console.log(chalk.hex(reversed)('returned color:', reversed));
+		expect(reversed).to.equal('#003c00');
+		done();
+	});
+
+	it('Should return a dim blue', (done) => {
+		let reversed = lal.color.reverseSolo(200,2,33);
+		console.log(chalk.hex('0000ff')('input: (color = 200, channel = 2, target = 33)'));
+		console.log(chalk.hex(reversed)('returned color:', reversed));
+		expect(reversed).to.equal('#1a1a51');
+		done();
+	});
+
+	it('Should return black', (done) => {
+		let reversed = lal.color.reverseSolo(255,0,0);
+		console.log(chalk.hex('ccc')('input: (color = 255, channel = 0, target = 0)'));
+		console.log(chalk.hex(reversed)('returned color:', reversed));
+		expect(reversed).to.equal('#000000');
+		done();
+	});
+});
