@@ -288,6 +288,19 @@ lal.color.reverseSolo(0,0,0,133);
 
 ```
 
+### blendLight
+
+This function takes an object with an array of 2 colors (hex or other chroma-js color spaces) and a opacity number for the first color, and returns the LCH lightness value (0 - 100 float) of the 2 colors, weighted by the opacity value. 0 opacity will weight the first value at 0 and the second at 1. 1 opacity will weigh the first at 1 and the second at 0. Both colors will be weighted evenly at .5 opacity.
+
+
+```Javascript
+
+lal.color.blendLight({colors: ['#000','#fff'], opacity: .5}
+
+// Will be around 50 (will have some decimals).
+
+```
+
 
 ## Tests
 

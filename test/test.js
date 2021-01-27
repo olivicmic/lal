@@ -448,3 +448,26 @@ describe('Testing lal.color.reverseSolo (uses lal.color.reverse) ', () => {
 		done();
 	});
 });
+
+describe('Testing lal.color.blendLight (rounded)', () => {
+	it('0% opacity black on white, should be 100 luma', (done) => {
+		let blended = Math.round(lal.color.blendLight({colors: ['#000','#fff'], opacity: 0}));
+		console.log('Returned luma:', blended);
+		expect(blended).to.equal(100);
+		done();
+	});
+
+	it('50% opacity black on white, should be 50 luma', (done) => {
+		let blended = Math.round(lal.color.blendLight({colors: ['#000','#fff'], opacity: .5}));
+		console.log('Returned luma:', blended);
+		expect(blended).to.equal(50);
+		done();
+	});
+
+	it('100% opacity black on white, should be 0 luma', (done) => {
+		let blended = Math.round(lal.color.blendLight({colors: ['#000','#fff'], opacity: 1}));
+		console.log('Returned luma:', blended);
+		expect(blended).to.equal(0);
+		done();
+	});
+});
