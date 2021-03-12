@@ -301,6 +301,41 @@ lal.color.blendLight({colors: ['#000','#fff'], opacity: .5}
 
 ```
 
+### is
+
+lal.is.image and lal.is.doc take simple mimetype strings and return true if the matches any from the list below. Very basic. More may be added later.
+
+#### images
+
+- image/jpeg
+- image/png
+- image/gif
+
+#### documents
+
+- text/plain
+- application/pdf
+- application/vnd.openxmlformats-officedocument.wordprocessingml.document (doc)
+
+```Javascript
+
+lal.is.image('image/jpeg');
+
+// returns true
+
+lal.is.doc('image/jpeg');
+
+// returns false
+
+lal.is.doc('text/plain');
+
+// returns true
+
+lal.is.image('text/plain');
+
+// returns false
+
+```
 
 ## Tests
 

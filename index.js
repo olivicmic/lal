@@ -5,5 +5,6 @@ exports.byteFormat = require('./modules/ByteFormat'),
 exports.color = require('./modules/Color'),
 exports.dateFormat = require('./modules/DateFormat'),
 exports.generateUnique = require('./modules/GenerateUnique'),
+exports.is = require('./modules/Is'),
 exports.lookupIP = require('./modules/LookupIP'),
 exports.random = require('./modules/Random');

@@ -1,3 +1,9 @@
+# Lal 3.4.0 Release Notes
+## March 11, 2021
+
+## New Features
+* **Added lal.is.image and lal.is.doc** - lal.is.doc and lal.is.image simply take a mimetype string and returns whether or not is a valid image type. Images are currently limited to png, jpeg/jpg, and gifs, whereas docs are txt, pdf, and docs.
+
 # Lal 3.0.1 Release Notes
 ## January 23, 2021
 
