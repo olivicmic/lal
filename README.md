@@ -303,7 +303,7 @@ lal.color.blendLight({colors: ['#000','#fff'], opacity: .5}
 
 ### is
 
-lal.is.image and lal.is.doc take simple mimetype strings and return true if the matches any from the list below. Very basic. More may be added later.
+lal.is.image and lal.is.doc take simple mimetype strings and return a shortned file type if the matches any from the list below. If there is no match it returns false.
 
 #### images
 
@@ -334,6 +334,18 @@ lal.is.doc('text/plain');
 lal.is.image('text/plain');
 
 // returns false
+
+```
+
+### ellipsis
+
+lal.ellipsis will return a string with ' ...' ellipsis appended if the string is over the character cuttoff limit stated in the second parameter.
+
+```Javascript
+
+lal.ellipsis('The quick brown fox jumps over the lazy dog', 15);
+
+// returns The quick brow ...
 
 ```
 

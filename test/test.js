@@ -473,24 +473,24 @@ describe('Testing lal.color.blendLight (rounded)', () => {
 });
 
 describe('Testing lal.is.image', () => {
-	it('should return true with the mimetype of \'image/jpeg\'', (done) => {
+	it('should return \'jpeg\' with the mimetype of \'image/jpeg\'', (done) => {
 		let fileCheck = lal.is.image('image/jpeg');
 		console.log(fileCheck);
-		expect(fileCheck).to.equal(true);
+		expect(fileCheck).to.equal('jpeg');
 		done();
 	});
 
-	it('should return true with the mimetype of \'image/png\'', (done) => {
+	it('should return \'png\' with the mimetype of \'image/png\'', (done) => {
 		let fileCheck = lal.is.image('image/png');
 		console.log(fileCheck);
-		expect(fileCheck).to.equal(true);
+		expect(fileCheck).to.equal('png');
 		done();
 	});
 
-	it('should return true with the mimetype of \'image/gif\'', (done) => {
+	it('should return \'gif\' with the mimetype of \'image/gif\'', (done) => {
 		let fileCheck = lal.is.image('image/gif');
 		console.log(fileCheck);
-		expect(fileCheck).to.equal(true);
+		expect(fileCheck).to.equal('gif');
 		done();
 	});
 
@@ -503,23 +503,24 @@ describe('Testing lal.is.image', () => {
 });
 
 describe('Testing lal.is.image', () => {
-	it('should return true with the mimetype of \'text/plain\'', (done) => {
+	it('should return \'txt\' with the mimetype of \'text/plain\'', (done) => {
 		let fileCheck = lal.is.doc('text/plain');
 		console.log(fileCheck);
-		expect(fileCheck).to.equal(true);
+		expect(fileCheck).to.equal('txt');
 		done();
 	});
 
-	it('should return true with the mimetype of \'application/pdf\'', (done) => {
+	it('should return \'true\' with the mimetype of \'application/pdf\'', (done) => {
 		let fileCheck = lal.is.doc('application/pdf');
-		expect(fileCheck).to.equal(true);
+		console.log(fileCheck);
+		expect(fileCheck).to.equal('pdf');
 		done();
 	});
 
-	it('should return true with the mimetype of \'application/vnd.openxmlformats-officedocument.wordprocessingml.document\'', (done) => {
+	it('should return \'doc\' with the mimetype of \'application/vnd.openxmlformats-officedocument.wordprocessingml.document\'', (done) => {
 		let fileCheck = lal.is.doc('application/vnd.openxmlformats-officedocument.wordprocessingml.document');
 		console.log(fileCheck);
-		expect(fileCheck).to.equal(true);
+		expect(fileCheck).to.equal('doc');
 		done();
 	});
 
@@ -527,6 +528,22 @@ describe('Testing lal.is.image', () => {
 		let fileCheck = lal.is.doc('image/gif');
 		console.log(fileCheck);
 		expect(fileCheck).to.equal(false);
+		done();
+	});
+});
+
+describe('Testing lal.ellipsis', () => {
+	let testStr = 'The quick brown fox jumps over the lazy dog';
+	it('should shorten ' + testStr + ' to 10 characters', (done) => {
+		let shortStr = lal.ellipsis(testStr,7);
+		console.log(shortStr, shortStr.length);
+		expect(shortStr.length).to.equal(10);
+		done();
+	});
+	it('should shorten ' + testStr + ' to 18 characters', (done) => {
+		let shortStr = lal.ellipsis(testStr,15);
+		console.log(shortStr, shortStr.length);
+		expect(shortStr.length).to.equal(18);
 		done();
 	});
 });

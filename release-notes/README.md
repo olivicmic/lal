@@ -1,3 +1,11 @@
+# Lal 4.0.0 Release Notes
+## March 12, 2021
+
+## New Features
+* **Revised lal.is.image and lal.is.doc** - lal.is.doc and lal.is.image return a short file type string when given a valid mimetype instead of true, but it will return false if is not valid. 
+
+* **Added lal.ellipsis** - Takes a string as the first parameter and a cutoff length for the second. If the string is over the cutoff ' ...' ellipsis will be appended to the string at the cutoff point.
+
 # Lal 3.4.0 Release Notes
 ## March 11, 2021
 

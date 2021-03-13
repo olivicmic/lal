@@ -3,7 +3,15 @@ const validFiles = {
 	doc: ['text/plain','application/pdf','application/vnd.openxmlformats-officedocument.wordprocessingml.document']
 };
 
-const validate = (mimetype, type) => validFiles[type].includes(mimetype);
+const short = {
+	image: ['jpeg','png','gif'],
+	doc: ['txt','pdf','doc']
+}
+
+const validate = (mimetype, type) => {
+	let index = validFiles[type].indexOf(mimetype);
+	return index >= 0 ? short[type][index] : false;
+};
 
 module.exports = {
 	validFiles,
