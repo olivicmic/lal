@@ -23,8 +23,8 @@ Will generate a string of random characters, and can be checked against existing
 - `input.whiteSpace {boolean}`: Will add spaces between characters or words.
 - `input.sentences {string}`: Will add sentence capitalization, with commas and punctuation to string. Will only work for an array charSet
 - `input.preset {string}`: Use an optional preset dictionary array or alpahabet string for charSet. Values:
-   - `'lorem ipsum'` uses 'greek'/lorem ipsum dictionary array.
-   - `'hex'` uses '0123456789abcdef' hex alpahabet.
+	- `'lorem ipsum'` uses 'greek'/lorem ipsum dictionary array.
+	- `'hex'` uses '0123456789abcdef' hex alpahabet.
 
 ```Javascript
 
@@ -88,10 +88,10 @@ lal.generateUnique({ charCount: 6, preset: 'hex' });
 #### input:
 - `input.ip {string}`: IP to lookup
 - `input.host {string}`: Preferred host. options:
-   - `'ip-api'` ip-api.com (default)
-   - `'ipapi'` ipapi.co
-   - `'extreme'` extreme-ip-lookup.com
-   - `'ipinfo'` ipinfo.io
+	- `'ip-api'` ip-api.com (default)
+	- `'ipapi'` ipapi.co
+	- `'extreme'` extreme-ip-lookup.com
+	- `'ipinfo'` ipinfo.io
 
 #### output:
 - `err`: error callback
@@ -207,8 +207,8 @@ lal.color.accent({color: '#810059'});
 /* 
   Return example:
   {
-    accent: '#1f0000', // brightend or darken color based on the input color, in this case: dark
-    bright: '#bf4b90' // brightened version.
+	 accent: '#1f0000', // brightend or darken color based on the input color, in this case: dark
+	 bright: '#bf4b90' // brightened version.
   }
 */
 ```
@@ -346,6 +346,28 @@ lal.ellipsis will return a string with ' ...' ellipsis appended if the string is
 lal.ellipsis('The quick brown fox jumps over the lazy dog', 15);
 
 // returns The quick brow ...
+
+```
+
+### queryString
+
+lal.queryString takes an object and returns URI encoded query string.
+
+```Javascript
+const testObj = {
+	one: 'red',
+	two: 'green',
+	three: 'blue',
+	and: '-June 7'
+};
+
+lal.queryString(testObj);
+
+// returns 'one=red&two=green&three=blue&and=-June%20'
+
+lal.queryString();
+
+// returns ''
 
 ```
 

@@ -547,3 +547,27 @@ describe('Testing lal.ellipsis', () => {
 		done();
 	});
 });
+
+describe('Testing lal.queryString', () => {
+	let testObj = {
+		one: 'red',
+		two: 'green',
+		three: 'blue',
+		and: '-June 7'
+	};
+
+	it('should make object a query string', (done) => {
+		let testQuery = lal.queryString(testObj);
+		console.log(testQuery);
+		expect(testQuery).to.equal('one=red&two=green&three=blue&and=-June%207');
+		done();
+	});
+
+	it('should return empty string with no object input', (done) => {
+		let testQuery = lal.queryString({});
+		console.log(testQuery);
+		expect(testQuery).to.equal('');
+		done();
+	});
+
+});

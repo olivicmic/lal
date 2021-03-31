@@ -1,4 +1,10 @@
 # Lal 4.0.0 Release Notes
+## March 30, 2021
+
+## New Features
+* **Added lal.queryString** - Takes an object and returns and URI encoded query string.
+
+# Lal 4.0.0 Release Notes
 ## March 12, 2021
 
 ## New Features
