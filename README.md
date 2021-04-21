@@ -376,16 +376,16 @@ lal.queryString();
 lal.api wraps Axios alongside queryString to simplify api requests.
 
 ```Javascript
-	api({ 
-		route: 'https://mysite.com/api/articles',
-		queries: { search: 'pizza' }, // will be encoded as a query string
-		auth: '', // takes a JWT string to be included in the request header with the 'Bearer' prefix added
-		method: 'put', // defaults to 'get'
-		data: {} // object to send when using post/put/patch
-		contentType: '' // defaults to 'application/json'
-	})
-		.then(response => console.log(response))
-		.catch(errors => console.log(errors));
+api({ 
+	route: 'https://mysite.com/api/articles',
+	queries: { search: 'pizza' }, // will be encoded as a query string
+	auth: '', // takes a JWT string to be included in the request header with the 'Bearer' prefix added
+	method: 'put', // defaults to 'get'
+	data: {} // object to send when using post/put/patch
+	contentType: '' // defaults to 'application/json'
+})
+	.then(response => console.log(response))
+	.catch(errors => console.log(errors));
 
 ```
 
