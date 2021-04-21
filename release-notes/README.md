@@ -1,4 +1,10 @@
-# Lal 4.0.0 Release Notes
+# Lal 4.2.0 Release Notes
+## April 21, 2021
+
+## New Features
+* **Added lal.api** - Wraps Axios along with lal.queryString to simplify api requests, so that a query object can be passed alongside a route, and it will be appended to the url.
+
+# Lal 4.1.0 Release Notes
 ## March 30, 2021
 
 ## New Features

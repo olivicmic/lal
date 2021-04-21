@@ -1,7 +1,7 @@
 module.exports = {
   rules: {
 	camelcase: 0,
-	'comma-dangle': [2, 'never'],
+	'comma-dangle': 0,
 	'comma-spacing': 0,
 	'consistent-return': 0,
 	curly: 0,
@@ -49,24 +49,8 @@ module.exports = {
   },
   env: {
 	node: true,
-	es6: true,
+	es2021: true,
 	browser: true,
-	jasmine: true,
-	mocha: true,
-	jquery: true
-  },
-  globals: {
-	angular: true,
-	by: true,
-	browser: true,
-	element: true,
-	inject: true,
-	io: true,
-	moment: true,
-	Modernizr: true,
-	Promise: true,
-	__TESTING__: true,
-	_: false,
-	ApplicationConfiguration: true
+	mocha: true
   }
 };

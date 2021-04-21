@@ -1,4 +1,5 @@
-var axios = require('axios');
+const axios = require('axios');
+const api = require('../api');
 
 const LookupIP = (input, output) => {
 	let lookup;
@@ -9,9 +10,9 @@ const LookupIP = (input, output) => {
 	else if (input.host === 'ipinfo') lookup = 'https://ipinfo.io/' + input.ip + '/json';
 	else return output({ error: 'Invalid host' }, null);
 
-	axios.get(lookup).then((response) => {
-		return output(null, response.data);
-	}).catch((errors) => output(errors, null));
+	api({ route: lookup })
+		.then(response => output(null, response))
+		.catch(errors => output(errors, null));
 };
 
 module.exports = LookupIP;

@@ -1,5 +1,4 @@
-'use strict';
-
+exports.api = require('./modules/api');
 exports.arrayList = require('./modules/ArrayList');
 exports.byteFormat = require('./modules/ByteFormat');
 exports.color = require('./modules/Color');
