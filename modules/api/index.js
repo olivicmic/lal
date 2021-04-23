@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { queryString } = require('.');
+const queryString = require('../queryString');
 
 module.exports = ({ auth, contentType = 'application/json', data, method = 'get', route = '', queries }) => new Promise((resolve, reject) => {
 	const query = queries ? '/?' + queryString(queries) : '';
