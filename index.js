@@ -8,4 +8,4 @@ exports.generateUnique = require('./modules/GenerateUnique');
 exports.is = require('./modules/Is');
 exports.lookupIP = require('./modules/LookupIP');
 exports.random = require('./modules/Random');
-exports.queryString = require('./modules/QueryString');
+exports.queryString = require('./modules/queryString');

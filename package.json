@@ -1,6 +1,6 @@
 {
   "name": "lal",
-  "version": "4.2.0",
+  "version": "4.2.1",
   "description": "Assorted useful Javascript function",
   "main": "index.js",
   "scripts": {
