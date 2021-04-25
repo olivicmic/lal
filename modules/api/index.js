@@ -2,7 +2,8 @@ const axios = require('axios');
 const queryString = require('../queryString');
 
 module.exports = ({ auth, contentType = 'application/json', data, debug, method = 'get', route = '', queries }) => new Promise((resolve, reject) => {
-	const query = queries ? '/?' + queryString(queries) : '';
+	const encoded = queryString(queries);
+	const query = encoded.length > 0 ? '/?' + encoded : '';
 	const setAuth = () => auth ? { 'Authorization': 'Bearer ' + auth } : null;
 	const request = {
 		data: data,
