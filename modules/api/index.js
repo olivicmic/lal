@@ -1,10 +1,10 @@
 const axios = require('axios');
 const queryString = require('../queryString');
 
-module.exports = ({ auth, contentType = 'application/json', data, method = 'get', route = '', queries }) => new Promise((resolve, reject) => {
+module.exports = ({ auth, contentType = 'application/json', data, debug, method = 'get', route = '', queries }) => new Promise((resolve, reject) => {
 	const query = queries ? '/?' + queryString(queries) : '';
 	const setAuth = () => auth ? { 'Authorization': 'Bearer ' + auth } : null;
-	axios({
+	const request = {
 		data: data,
 		method: method,
 		url: route + query,
@@ -12,7 +12,9 @@ module.exports = ({ auth, contentType = 'application/json', data, method = 'get'
 			...setAuth(),
 			'content-type': contentType,
 		}
-	})
+	};
+	if (debug) console.log('lal.api debug', request);
+	axios(request)
 		.then(response => resolve(response.data))
 		.catch(error => reject(error));
 });
