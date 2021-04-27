@@ -10,7 +10,7 @@ const LookupIP = (input, output) => {
 	else if (input.host === 'ipinfo') lookup = 'https://ipinfo.io/' + input.ip + '/json';
 	else return output({ error: 'Invalid host' }, null);
 
-	api({ route: lookup, debug: true })
+	api({ url: lookup, debug: true })
 		.then(response => output(null, response))
 		.catch(errors => output(errors, null));
 };

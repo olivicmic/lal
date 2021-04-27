@@ -373,26 +373,23 @@ lal.queryString();
 
 ### api
 
-lal.api wraps Axios alongside queryString to simplify api requests.
+lal.api wraps Axios alongside queryString to simplify api requests. It accepts the parameters below, as well as all stadard Axios parameters like url, data, and params.
 
 #### Usage
 ```Javascript
-api({  route: 'https://mysite.com/api/articles' })
+api({  url: 'https://mysite.com/api/articles' })
 	.then(response => console.log(response))
 	.catch(errors => console.log(errors));
 ```
 
 #### Parameters
 - `auth (string)`: JWT access token.
-- `data (object)`: data used for post/put/patch request.
+- `contentType (string)`: content type to be passed to the request header
 - `debug (boolean)`: if true request detail and success/error response are logged
 - `filter (function)`:  a [array filter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to apply to the main collection, for example filtering authors for a set of retrieved articles.
 - `itemNames (string)`: Designate a main collection within the response object. For example if your API includes an array named 'users' you can state so here, which enables filtering. If undefined the main collection will be named 'items'.
-- `method (string)`: rest request type, defaults to 'get'.
 - `onError (function)`:  A function to run when an error occurs. Recieves response error object as a callback: `const onError = (error) => console.log(error);`.
 - `onSuccess (function)`:  A function to run on a successful API request. Recieves response object as a callback: `const onSuccess = (response) => console.log(response);`.
-- `route (string)`: Full URL of an API endpoint.
-- `queries (object)`: An object of strings to be encoded and appended to the request url. For example `{ sortBy: 'date', search: 'bananas'}` becomes `?sortBy=date&search=bananas`
 
 ## Tests
 

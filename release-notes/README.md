@@ -1,4 +1,10 @@
 # Lal 4.2.0 Release Notes
+## April 27, 2021
+
+## New Features
+* **Updated lal.api** - Lal.api has been rewritten somewhat, with different parameters, potentially breaking some usage. So: 5.0.0
+
+# Lal 4.2.0 Release Notes
 ## April 21, 2021
 
 ## New Features
