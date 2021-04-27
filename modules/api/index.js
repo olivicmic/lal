@@ -1,9 +1,9 @@
-const axios = require('axios');
+const execute = require('./execute');
 const queryString = require('../queryString');
 
 module.exports = ({
 	auth, // jwt auth access token
-	contentType = 'application/json',
+	contentType = 'application/json', // request content type
 	data, // post/put/patch data object
 	debug, // if true log rest details and sucess/error respone
 	delay, // delay in milliseconds
@@ -17,34 +17,14 @@ module.exports = ({
 }) => new Promise((resolve, reject) => {
 	const encoded = queryString(queries);
 	const query = encoded.length > 0 ? '/?' + encoded : '';
-	const setAuth = () => auth ? { 'Authorization': 'Bearer ' + auth } : null;
-	const filterArr = (arr) => arr.filter(filter);
-	const collection = itemNames || 'items';
 	const request = {
 		data: data,
 		method: method,
 		url: route + query,
 		headers: {
-			...setAuth(),
+			...auth ? { 'Authorization': 'Bearer ' + auth } : null,
 			'content-type': contentType,
 		}
 	};
-	if (debug) console.log('lal.api debug', request);
-	setTimeout(() => axios(request)
-		.then(response => {
-			let content = response.data;
-			let filtered = {
-				...content,
-				[collection]: content[collection] ? filterArr(content[collection]) : []
-			};
-			if (debug) console.log('lal.api debug success', filtered);
-			onSuccess(filtered);
-			resolve(filtered);
-		})
-		.catch(error => {
-			if (debug) console.log('lal.api debug', error);
-			onError(error);
-			reject(error);
-		})
-	,delay);
+	return execute({ debug, delay, filter, itemNames, onSuccess, onError, resolve, reject, request });
 });
