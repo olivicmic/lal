@@ -571,3 +571,20 @@ describe('Testing lal.queryString', () => {
 	});
 
 });
+
+describe('Testing lal.uno', () => {
+	it('mono should euqal one', (done) => {
+		let { mono } = lal.uno('one');
+		console.log(mono);
+		expect(mono).to.equal('one');
+		done();
+	});
+	it('blue value should be undefined, red should equal one', (done) => {
+		let { blue, red } = lal.uno({ red: 'one'},'blue');
+		console.log(blue);
+		expect(blue).to.equal(undefined);
+		expect(red).to.equal('one');
+		done();
+	});
+
+});

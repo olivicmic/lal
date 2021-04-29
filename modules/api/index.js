@@ -1,18 +1,24 @@
 const axios = require('axios');
 const queryString = require('../queryString');
+const uno = require('../uno');
 
-module.exports = ({
-	auth,
-	contentType = 'application/json',
-	debug,
-	filter = f => f,
-	itemNames,
-	onError = () => {},
-	onSuccess = () => {},
-	...rest
-}) => new Promise((resolve, reject) => {
+module.exports = (props) => new Promise((resolve, reject) => {
+	const {
+		auth,
+		contentType = 'application/json',
+		debug,
+		filter = f => f,
+		itemNames,
+		mono,
+		onError = () => {},
+		onSuccess = () => {},
+		url,
+		...rest
+	} = uno(props);
+
 	const request = {
 		...rest,
+		url: mono || url,
 		headers: {
 			...auth ? { 'Authorization': 'Bearer ' + auth } : null,
 			'content-type': contentType,

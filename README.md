@@ -373,11 +373,21 @@ lal.queryString();
 
 ### api
 
-lal.api wraps Axios alongside queryString to simplify api requests. It accepts the parameters below, as well as all stadard Axios parameters like url, data, and params.
+lal.api wraps Axios alongside queryString to simplify api requests. It accepts the parameters below, as well as all stadard Axios parameters like url, data, and params. It recieves functions to run after a successful or error response, as well as a filter function to apply to a main collection.
 
 #### Usage
 ```Javascript
-api({  url: 'https://mysite.com/api/articles' })
+api('https://mysite.com/api/articles')
+	.then(response => console.log(response))
+	.catch(errors => console.log(errors));
+
+/* or */
+
+api({ 
+	url: 'https://mysite.com/api/articles',
+	params: { sortBy: '-position' },
+	onSuccess: res => console.log('fetch successful! response:', res);
+})
 	.then(response => console.log(response))
 	.catch(errors => console.log(errors));
 ```
@@ -390,6 +400,36 @@ api({  url: 'https://mysite.com/api/articles' })
 - `itemNames (string)`: Designate a main collection within the response object. For example if your API includes an array named 'users' you can state so here, which enables filtering. If undefined the main collection will be named 'items'.
 - `onError (function)`:  A function to run when an error occurs. Recieves response error object as a callback: `const onError = (error) => console.log(error);`.
 - `onSuccess (function)`:  A function to run on a successful API request. Recieves response object as a callback: `const onSuccess = (response) => console.log(response);`.
+
+### uno
+
+lal.uno allows for functions to be written to recieve objects `myFunction({ a: 'one' })` or individual values `myFunction('one')` as params.
+
+#### Usage
+```Javascript
+const myFunction = (props) => {
+	const { mono, date, ...rest } = lal.uno(props);
+	return { mono, date, ...rest };
+};
+
+const { mono, date } = myFunction('monday');
+
+console.log(mono, date); // logs 'monday' & undefined;
+
+/* or */
+
+const { mono, date } = myFunction({ date: 'monday'});
+
+console.log(mono, date); // logs undefined & 'monday' - your function can now be shorthand and recieve complex objects
+
+/* additionally  */
+
+const { banana, date } = myFunction('tuesday','banana'); // the second param names the individual value
+
+console.log(banana, date); // logs 'tuesday' & undefined;
+
+```
+
 
 ## Tests
 
