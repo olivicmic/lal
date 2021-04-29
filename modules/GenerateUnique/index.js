@@ -1,5 +1,5 @@
 const lorem = require('../../resources/lorem-ipsum'),
-	random = require('../Random');
+	random = require('../random');
 
 const isEven = (input) => input % 2 === 0;
 
