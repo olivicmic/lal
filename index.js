@@ -7,6 +7,7 @@ exports.ellipsis = require('./modules/ellipsis');
 exports.generateUnique = require('./modules/generateUnique');
 exports.is = require('./modules/Is');
 exports.lookupIP = require('./modules/lookupIP');
+exports.objectsMatch = require('./modules/objectsMatch');
 exports.queryString = require('./modules/queryString');
 exports.random = require('./modules/random');
 exports.uno = require('./modules/uno');

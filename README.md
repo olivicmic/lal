@@ -11,6 +11,14 @@ Include:
 
 ```Javascript
 lal = require('lal');
+
+lal.random();
+
+/* or */
+
+{ random } = require('lal');
+
+random();
 ```
 
 ### generateUnique
@@ -430,6 +438,22 @@ console.log(banana, date); // logs 'tuesday' & undefined;
 
 ```
 
+
+### objectsMatch
+
+This function recieves two objects, it returns true unless one property is unlike the other object, then it returns true.
+
+#### Usage
+```Javascript
+const baseObj = { one: 'red', two: 'green'};
+const otherObj = { one: 'red', two: 'green'};
+
+console.log(lal.objectsMatch(baseObj, otherObj)); // true
+
+otherObj.three = 'blue';
+
+console.log(lal.objectsMatch(baseObj, otherObj)); // false
+```
 
 ## Tests
 

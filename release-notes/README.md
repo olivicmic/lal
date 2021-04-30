@@ -1,10 +1,16 @@
 # Lal 5.2.0 Release Notes
-## April 27, 2021
+## April 30, 2021
+
+## New Features
+* **Added lal.objectsMatch** - If two objects match, it returns true, if they don't then false.
+
+# Lal 5.1.0 Release Notes
+## April 29, 2021
 
 ## New Features
 * **Added lal.uno** - Uno allows for functions to recieve params as objects or individual values.
 
-# Lal 5.2.0 Release Notes
+# Lal 5.0.0 Release Notes
 ## April 27, 2021
 
 ## New Features
