@@ -42,6 +42,13 @@ describe('Testing lal.dateFormat', () => {
 		expect(minute).to.not.equal(NaN);
 		done();
 	});
+	it('dateFormat should return equal values despite one instance receiving a date object and the other recieves a date string', (done) => {
+		let dateA = lal.dateFormat(new Date('August 19, 1975 13:15:30'));
+		let dateB = lal.dateFormat('August 19, 1975 13:15:30');
+		console.log(chalk.hex('#ccffff')('date A:', dateA,'date B:', dateB));
+		expect(dateA).to.equal(dateB);
+		done();
+	});
 	it('should return a truncated date of 14 characters', (done) => {
 		let shortDate = lal.dateFormat({truncate: true});
 		console.log('pretty: ', shortDate, 'length: ', shortDate.length);

@@ -1,3 +1,10 @@
+# Lal 5.3.0 Release Notes
+## May 6, 2021
+
+## New Features
+* **Added lal.log** - Will conditionally run console log alongside a provided function.
+* **Fixed lal.dateFormat** - Some hours were not converting from 24 to 12 format correctly.
+
 # Lal 5.2.0 Release Notes
 ## April 30, 2021
 

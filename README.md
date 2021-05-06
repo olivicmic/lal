@@ -455,6 +455,16 @@ otherObj.three = 'blue';
 console.log(lal.objectsMatch(baseObj, otherObj)); // false
 ```
 
+### log
+
+Conditionally log a value while running a provided function. The first param is your desired function. The second is whatever you wish to log. The third param is required to enable the logging, as it is undefined by default.
+
+#### Usage
+```Javascript
+const myFunction = () => console.log('world');
+lal.log(myFunction, 'hello', true); // logs 'hello' then 'world'.
+```
+
 ## Tests
 
 `npm test`
