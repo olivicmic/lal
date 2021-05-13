@@ -403,7 +403,7 @@ api({
 #### Parameters
 - `auth (string)`: JWT access token.
 - `contentType (string)`: content type to be passed to the request header
-- `debug (boolean)`: if true request detail and success/error response are logged
+- `debug (boolean)`: If true request detail and success/error response are logged, additionally the property "lalDebug" will be added to the response with a true value.
 - `filter (function)`:  a [array filter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to apply to the main collection, for example filtering authors for a set of retrieved articles.
 - `itemNames (string)`: Designate a main collection within the response object. For example if your API includes an array named 'users' you can state so here, which enables filtering. If undefined the main collection will be named 'items'.
 - `onError (function)`:  A function to run when an error occurs. Recieves response error object as a callback: `const onError = (error) => console.log(error);`.

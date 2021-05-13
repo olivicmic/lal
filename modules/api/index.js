@@ -1,5 +1,6 @@
 const axios = require('axios');
 const queryString = require('../queryString');
+const log = require('../log');
 const uno = require('../uno');
 
 module.exports = (props) => new Promise((resolve, reject) => {
@@ -26,7 +27,7 @@ module.exports = (props) => new Promise((resolve, reject) => {
 	};
 	const collection = itemNames || 'items';
 	const filterArr = (arr) => arr.filter(filter);
-	if (debug) console.log('lal.api debug', request);
+	if (debug) console.log('lal.api debug: starting', request);
 	return axios(request)
 		.then(response => {
 			let content = response.data;
@@ -34,12 +35,12 @@ module.exports = (props) => new Promise((resolve, reject) => {
 				...content,
 				[collection]: content[collection] ? filterArr(content[collection]) : []
 			};
-			if (debug) console.log('lal.api debug success', filtered);
+			log(() => filtered.debug = true , { lalDebug: 'success', filtered }, debug);
 			onSuccess(filtered);
 			resolve(filtered);
 		})
 		.catch(error => {
-			if (debug) console.log('lal.api debug', error);
+			log(() => error.debug = true , { lalDebug: 'error', error }, debug);
 			onError(error);
 			reject(error);
 		});
