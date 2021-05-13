@@ -40,8 +40,9 @@ module.exports = (props) => new Promise((resolve, reject) => {
 			resolve(filtered);
 		})
 		.catch(error => {
-			log(() => error.debug = true , { lalDebug: 'error', error }, debug);
-			onError(error);
-			reject(error);
+			let errObj = { ...error };
+			log(() => errObj.debug = true , { lalDebug: 'error', errObj }, debug);
+			onError(errObj);
+			reject(errObj);
 		});
 });
