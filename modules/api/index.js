@@ -27,7 +27,7 @@ module.exports = (props) => new Promise((resolve, reject) => {
 	const collection = itemNames || 'items';
 	const filterArr = (arr) => arr.filter(filter);
 	if (debug) console.log('lal.api debug', request);
-	axios(request)
+	return axios(request)
 		.then(response => {
 			let content = response.data;
 			let filtered = {

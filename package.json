@@ -1,7 +1,7 @@
 {
   "name": "lal",
-  "version": "5.3.5",
-  "description": "Assorted useful Javascript functions",
+  "version": "5.3.6",
+  "description": "Assorted Javascript Utilities",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter spec",
@@ -21,13 +21,13 @@
   },
   "homepage": "https://github.com/olivicmic/lal#readme",
   "devDependencies": {
-    "chai": "^4.2.0",
-    "chalk": "^4.1.0",
-    "mocha": "^8.2.1"
+    "chai": "^4.3.4",
+    "chalk": "^4.1.1",
+    "mocha": "^8.4.0"
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "chroma-js": "^2.1.0",
+    "chroma-js": "^2.1.1",
     "hex-color-regex": "^1.1.0"
   }
 }
