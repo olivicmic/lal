@@ -35,13 +35,13 @@ module.exports = (props) => new Promise((resolve, reject) => {
 				...content,
 				[collection]: content[collection] ? filterArr(content[collection]) : []
 			};
-			log(() => filtered.debug = true , { lalDebug: 'success', filtered }, debug);
+			log(() => { if (debug) filtered.debug = true }, { lalDebug: 'success', filtered }, debug);
 			onSuccess(filtered);
 			resolve(filtered);
 		})
 		.catch(error => {
 			let errObj = { ...error };
-			log(() => errObj.debug = true , { lalDebug: 'error', errObj }, debug);
+			log(() => { if (debug) errObj.debug = true }, { lalDebug: 'error', errObj }, debug);
 			onError(errObj);
 			reject(errObj);
 		});
