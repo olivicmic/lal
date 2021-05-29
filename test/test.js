@@ -283,7 +283,7 @@ describe('Testing lal.arrayList', () => {
 	it('Should return null', (done) => {
 		let arrList = lal.arrayList([]);
 		console.log(arrList);
-		expect(arrList).to.equal(null);
+		expect(arrList).to.equal('');
 		done();
 	});
 });

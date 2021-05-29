@@ -36,9 +36,10 @@ module.exports = (props) => new Promise((resolve, reject) => {
 				[collection]: content[collection] ? filterArr(content[collection]) : []
 			};
 			log(() => { if (debug) filtered.debug = true }, { lalDebug: 'success', filtered }, debug);
-			onSuccess(filtered);
 			resolve(filtered);
+			return filtered;
 		})
+		.then(filtered => onSuccess(filtered))
 		.catch(error => {
 			let errObj = { ...error };
 			log(() => { if (debug) errObj.debug = true }, { lalDebug: 'error', errObj }, debug);
