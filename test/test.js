@@ -6,8 +6,11 @@ const chai = require('chai'),
 	hexColorRegex = require('hex-color-regex'),
 	lal = require('../index'),
 	lorem = require('../resources/lorem-ipsum'),
+	misc = require('./misc'),
 	chalk = require('chalk'),
 	monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+misc();
 
 describe('Testing lal.dateFormat', () => {
 	let date = new Date(),
