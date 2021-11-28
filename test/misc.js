@@ -32,12 +32,12 @@ module.exports = () => describe('Testing lal.objecttor', () => {
 		{ title: 'Hotdog', price: 2.50, calories: 225},
 		{ message: 'I am an untitled object'}
 	];
-
 	const objected = lal.objector(objectArray);
 
 	it('Should take an 5-length array with 4 objects and return an object with 4 keys', (done) => {
 		let objectLength = Object.keys(objected).length;
 		console.log('object length: ' + objectLength);
+		expect(lal.isObject(objected)).to.be.true;
 		expect(objectLength).to.equal(4);
 		done();
 	});
@@ -49,8 +49,8 @@ module.exports = () => describe('Testing lal.objecttor', () => {
 	});
 
 	it('Returned object should have a property named \'4\' derrived from the untitled object.', (done) => {
-		console.log('Pizza object: ', objected.Pizza);
-		expect(objected).to.have.property('Pizza');
+		console.log('Pizza object: ', objected['4']);
+		expect(objected).to.have.property('4');
 		done();
 	});
 });

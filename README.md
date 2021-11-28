@@ -345,6 +345,21 @@ lal.is.image('text/plain');
 
 ```
 
+### isObject
+
+This function tells returns true or false if you pass it an object, and not an array.
+
+#### Usage
+
+```Javascript
+const exampleOne = ['hello','world'];
+const exampleTwo = { hello: 'world' };
+
+console.log(lal.isObject(exampleOne)); // returns false
+console.log(lal.isObject(exampleTwo)); // returns true
+
+```
+
 ### ellipsis
 
 lal.ellipsis will return a string with ' ...' ellipsis appended if the string is over the character cuttoff limit stated in the second parameter.
@@ -435,6 +450,32 @@ console.log(mono, date); // logs undefined & 'monday' - your function can now be
 const { banana, date } = myFunction('tuesday','banana'); // the second param names the individual value
 
 console.log(banana, date); // logs 'tuesday' & undefined;
+
+```
+
+
+### objector
+
+Objector takes an array of objects and returns the colletion as an object. Each contained object is assigned a key based on their "title" property. If no title is present, then it the key is taken from its index position from the orignal array.
+
+#### Usage
+```Javascript
+const exampleObjectArray = [
+	{ title: 'Sandwich', price: 3.00, calories: 290},
+	{ title: 'Pizza', price: 4.50, calories: 350},
+	'I am a useless string',
+	{ title: 'Hotdog', price: 2.50, calories: 225},
+	{ message: 'I am an untitled object'}
+];
+
+console.log(lal.objector(objectArray)); // logs below:
+
+{
+	Sanwich: { title: 'Sandwich', price: 3.00, calories: 290},
+	Pizza: { title: 'Pizza', price: 4.50, calories: 350},
+	Hotdog: { title: 'Hotdog', price: 2.50, calories: 225},
+	'4': { message: 'I am an untitled object'}
+}
 
 ```
 
