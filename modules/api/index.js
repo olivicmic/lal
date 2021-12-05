@@ -1,5 +1,6 @@
 const axios = require('axios');
 const queryString = require('../queryString');
+const objector = require('../objector');
 const log = require('../log');
 const uno = require('../uno');
 
@@ -11,6 +12,7 @@ module.exports = (props) => new Promise((resolve, reject) => {
 		filter = f => f,
 		itemNames,
 		mono,
+		objectify,
 		onError = () => {},
 		onSuccess = () => {},
 		url,
@@ -26,14 +28,15 @@ module.exports = (props) => new Promise((resolve, reject) => {
 		}
 	};
 	const collection = itemNames || 'items';
-	const filterArr = (arr) => arr.filter(filter);
+	const filterArr = (unfilteredArr) => unfilteredArr.filter(filter);
+	const objected = (unobjected) => objectify ? objector(unobjected) : unobjected;
 	if (debug) console.log('lal.api debug: starting', request);
 	return axios(request)
 		.then(response => {
 			let content = response.data;
 			let filtered = {
 				...content,
-				[collection]: content[collection] ? filterArr(content[collection]) : []
+				[collection]: objected(content[collection] ? filterArr(content[collection]) : [])
 			};
 			log(() => { if (debug) filtered.debug = true }, { lalDebug: 'success', filtered }, debug);
 			resolve(filtered);

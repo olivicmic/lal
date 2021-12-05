@@ -1,3 +1,11 @@
+# Lal 5.4.0 Release Notes
+## May 6, 2021
+
+## New Features
+* **Added lal.isObject** - Will return true if given an ocject and not an array.
+* **Added lal.objector** - WIll take an array of objects and will return an object of objects where each is keyed by its own name/title property.
+* **Added objectify param to lal.api** - If the response contains an array of objects, convert it to an addressable object described above with objector.
+
 # Lal 5.3.0 Release Notes
 ## May 6, 2021
 

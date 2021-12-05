@@ -1,11 +1,14 @@
 const isObject = require('../isObject');
 
-module.exports = (array) => {
+module.exports = (input) => {
 	let newObject = {};
-	for (let index in array) {
-		if (isObject(array[index])) {
-			newObject[array[index].title || index] = array[index];
-		}
-	};
-	return newObject;
+	if (Array.isArray(input)) {
+		for (let index in input) {
+			if (isObject(input[index])) {
+				newObject[input[index].name || input[index].title || index] = input[index];
+			}
+		};
+		return newObject;
+	}
+	return input;
 };

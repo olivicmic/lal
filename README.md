@@ -421,6 +421,7 @@ api({
 - `debug (boolean)`: If true request detail and success/error response are logged, additionally the property "lalDebug" will be added to the response with a true value.
 - `filter (function)`:  a [array filter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to apply to the main collection, for example filtering authors for a set of retrieved articles.
 - `itemNames (string)`: Designate a main collection within the response object. For example if your API includes an array named 'users' you can state so here, which enables filtering. If undefined the main collection will be named 'items'.
+- `objectify (boolean)`: If true, the main collection array will be converted to an object using [lal.objector](###objector). The returned object will be empty if the original array contains no objects.
 - `onError (function)`:  A function to run when an error occurs. Recieves response error object as a callback: `const onError = (error) => console.log(error);`.
 - `onSuccess (function)`:  A function to run on a successful API request. Recieves response object as a callback: `const onSuccess = (response) => console.log(response);`.
 
@@ -456,7 +457,7 @@ console.log(banana, date); // logs 'tuesday' & undefined;
 
 ### objector
 
-Objector takes an array of objects and returns the colletion as an object. Each contained object is assigned a key based on their "title" property. If no title is present, then it the key is taken from its index position from the orignal array.
+Objector takes an array of objects and returns the colletion as an object. Each contained object is assigned a key based on their "title" property. If no title is present, then it the key is taken from its index position from the orignal array. If it recieves a non-array it will be returned unchanged.
 
 #### Usage
 ```Javascript
