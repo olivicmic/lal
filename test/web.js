@@ -21,13 +21,30 @@ module.exports = ({ chai, expect, lal }) => {
 			done();
 		});
 	});
+
+	describe('Testing lal.isObjectID', () => {
+		let goodID = lal.isObjectID('61e204e57abe817981347b1c');
+		let badID = lal.isObjectID('Is a 24 character string');
+		console.log('good id', goodID);
+		console.log('bad ID', badID);
+
+		it('should be a valid object ID', (done) => {
+			expect(goodID).to.equal(true);
+			done();
+		});
+		it('should be an invalid string', (done) => {
+			expect(badID).to.equal(false);
+			done();
+		});
+	});
+	/*
 	describe('Testing lal.api', () => {
-		lal.api({ 
+		lal.api({
 			url: 'https://api.vics.pics/v1/resources/test-collection',
 			itemNames: 'characters',
 			objectify: true,
 			onSuccess: res => console.log('🤩', res) })
-		.then(response => output(null, response))
-		.catch(errors => console.log(errors, '😡'));
-	});
+			.then(response => done())
+			.catch(errors => console.log(errors, '😡'));
+	}); */
 };

@@ -1,16 +1,1 @@
-exports.api = require('./modules/api');
-exports.arrayList = require('./modules/arrayList');
-exports.byteFormat = require('./modules/byteFormat');
-exports.color = require('./modules/color');
-exports.dateFormat = require('./modules/dateFormat');
-exports.ellipsis = require('./modules/ellipsis');
-exports.generateUnique = require('./modules/generateUnique');
-exports.is = require('./modules/is');
-exports.isObject = require('./modules/isObject');
-exports.log = require('./modules/log');
-exports.lookupIP = require('./modules/lookupIP');
-exports.objector = require('./modules/objector');
-exports.objectsMatch = require('./modules/objectsMatch');
-exports.queryString = require('./modules/queryString');
-exports.random = require('./modules/random');
-exports.uno = require('./modules/uno');
+module.exports = require('./modules')

@@ -1,3 +1,9 @@
+# Lal 5.5.0 Release Notes
+## Jan 15, 2021
+
+## New Features
+* **Added lal.isObjectID** - If passed a 24 bit Mongoose Object ID string, it will return true.
+
 # Lal 5.4.0 Release Notes
 ## May 6, 2021
 

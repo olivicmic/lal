@@ -1,6 +1,6 @@
 {
   "name": "lal",
-  "version": "5.4.1",
+  "version": "5.5.0",
   "description": "Assorted Javascript Utilities",
   "main": "index.js",
   "scripts": {

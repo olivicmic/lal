@@ -360,6 +360,17 @@ console.log(lal.isObject(exampleTwo)); // returns true
 
 ```
 
+### isObjectID
+
+If you pass this function a 24 bit hex mongoose object ID, it will return true.
+
+#### Usage
+
+```Javascript
+	console.log(lal.isObjectID('61e204e57abe817981347b1c')); // returns true
+	console.log(lal.isObjectID('Is a 24 character string')); // returns false
+```
+
 ### ellipsis
 
 lal.ellipsis will return a string with ' ...' ellipsis appended if the string is over the character cuttoff limit stated in the second parameter.
