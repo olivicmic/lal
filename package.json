@@ -1,6 +1,6 @@
 {
   "name": "lal",
-  "version": "5.5.0",
+  "version": "5.5.1",
   "description": "Assorted Javascript Utilities",
   "main": "index.js",
   "scripts": {
@@ -26,7 +26,7 @@
     "mocha": "^8.4.0"
   },
   "dependencies": {
-    "axios": "^0.24.0",
+    "axios": "^0.25.0",
     "chroma-js": "^2.1.1",
     "hex-color-regex": "^1.1.0"
   }
