@@ -1,4 +1,4 @@
-const isObject = require('./isObject');
+const isObject = require('../isObject');
 
 module.exports = (input) => {
 	let newObject = {};
