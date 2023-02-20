@@ -2,11 +2,12 @@ module.exports = {
 	api: require('./api'),
 	arrayList: require('./arrayList'),
 	byteFormat: require('./byteFormat'),
-	color: require('./color'),
 	dateFormat: require('./dateFormat'),
 	ellipsis: require('./ellipsis'),
 	generateUnique: require('./generateUnique'),
+	ipsum: require('./ipsum'),
 	is: require('./is'),
+	isEven: require('./isEven'),
 	isObject: require('./isObject'),
 	isObjectID: require('./isObjectID'),
 	log: require('./log'),
@@ -15,5 +16,5 @@ module.exports = {
 	objectsMatch: require('./objectsMatch'),
 	queryString: require('./queryString'),
 	random: require('./random'),
-	uno: require('./uno')
+	uno: require('./uno'),
 };

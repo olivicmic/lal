@@ -1,5 +1,4 @@
-const hexColorRegex = require('hex-color-regex'),
-	monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 module.exports = ({ assert, chalk, expect, lal }) => {
 	describe('Testing lal.dateFormat', () => {
@@ -187,7 +186,7 @@ module.exports = ({ assert, chalk, expect, lal }) => {
 			var rando = lal.generateUnique({
 					charCount: 30,
 					whiteSpace: true,
-					preset: 'lorem ipsum',
+					preset: 'lorem',
 					sentences: true
 				}),
 				randoSize = rando.length - 1,
@@ -208,7 +207,6 @@ module.exports = ({ assert, chalk, expect, lal }) => {
 
 			console.log('Test set:');
 			console.log(rando);
-			expect(hexColorRegex({ strict: true }).test('#' + rando)).to.be.true;
 			expect(rando.length).to.equal(6);
 			done();
 		});

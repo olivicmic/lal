@@ -2,29 +2,28 @@
 
 const chai = require('chai'),
 	chalk = require('chalk'),
-	color = require('./color'),
-	image = require('./image'),
-	lorem = require('../resources/lorem-ipsum'),
-	lookupIP = require('./lookupIP'),
-	misc = require('./misc'),
-	text = require('./text'),
-	tools = require('./tools'),
-	web = require('./web');
+	color = require('./color.js'),
+	image = require('./image.js'),
+	lookupIP = require('./lookupIP.js'),
+	misc = require('./misc.js'),
+	text = require('./text.js'),
+	tools = require('./tools.js'),
+	web = require('./web.js');
 
 const shared = {
 	assert: chai.assert,
 	chalk,
 	expect: chai.expect,
-	lal: require('../index')
+	lal: require('../dist')
 };
 
 console.log(chalk.hex('FFBDBD').bold('LAL ▓▓▒▒░░'));
 console.log(chalk.hex('FF00CC').bold('TEST START'));
 
-//color(shared);
-//image(shared);
-//lookupIP(shared);
-//misc(shared);
-//text(shared);
-//tools(shared);
-web(shared);
+// color(shared);
+// image(shared);
+// lookupIP(shared);
+// misc(shared);
+text(shared);
+// tools(shared);
+// web(shared);

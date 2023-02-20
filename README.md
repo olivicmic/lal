@@ -1,5 +1,5 @@
 # Lal
-Assorted NodeJS Utilities
+Assorted NodeJS Utilities - Readme needs to be updated for v6. Use at your own risk.
 
 ## Installation
 

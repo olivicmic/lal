@@ -1,11 +1,12 @@
 {
   "name": "lal",
-  "version": "5.5.1",
+  "version": "6.0.0",
   "description": "Assorted Javascript Utilities",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "build": "NODE_ENV=production babel modules --out-dir dist --copy-files",
     "test": "mocha --reporter spec",
-    "watch": "esw -w --color --clear --ignore-pattern .eslintrc.js"
+    "watch": "esw -w --color --clear --ignore-pattern .eslintrc.js modules"
   },
   "engines": {
     "node": ">=6.10.0"
@@ -21,13 +22,13 @@
   },
   "homepage": "https://github.com/olivicmic/lal#readme",
   "devDependencies": {
+    "@babel/cli": "^7.20.7",
+    "@babel/core": "^7.20.12",
     "chai": "^4.3.4",
     "chalk": "^4.1.1",
     "mocha": "^8.4.0"
   },
   "dependencies": {
-    "axios": "^0.25.0",
-    "chroma-js": "^2.1.1",
-    "hex-color-regex": "^1.1.0"
+    "axios": "^1.3.3"
   }
 }

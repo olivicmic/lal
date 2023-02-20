@@ -1,4 +1,4 @@
-module.exports = ({ chalk, expect, lal }) => {
+module.exports =({ chalk, expect, lal }) => {
 	describe('Testing lal.color.solo', () => {
 		it('Should return max red only hex', (done) => {
 			let isolateRed = lal.color.solo({ channel: 0, color: 255});

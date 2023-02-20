@@ -1,4 +1,5 @@
 module.exports = ({ chai, expect, lal }) => {
+	console.log('hhhhhheeee');
 	describe('Testing lal.queryString', () => {
 		let testObj = {
 			one: 'red',

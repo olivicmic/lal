@@ -1,0 +1,1 @@
+module.exports = (way, def = 0) => way || way === 0;
