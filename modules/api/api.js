@@ -24,10 +24,11 @@ module.exports = (props) => new Promise((resolve, reject) => {
 	};
 	if (debug) console.log(`lal.api debug at ${debug.location || ''}: starting`, request);
 	const recieve = (toDo, inputObj, extra = () => {}, message) => {
-		if (debug) console.log('lal.api completed', message, inputObj);
 		let filtered = { ...filter(inputObj), ...debug && { debug: true }};
+		if (debug) console.log('lal.api completed', message, inputObj, filtered);
 		toDo(filtered);
 		extra(filtered);
+		return filtered;
 	};
 	return axios(request)
 		.then(response => recieve(resolve, response, onSuccess, 'success'))

@@ -1,5 +1,4 @@
 const axios = require('axios');
-const log = require('../log');
 const uno = require('../uno');
 module.exports = props => new Promise((resolve, reject) => {
   const {
@@ -25,17 +24,13 @@ module.exports = props => new Promise((resolve, reject) => {
   };
   if (debug) console.log(`lal.api debug at ${debug.location || ''}: starting`, request);
   const recieve = (toDo, inputObj, extra = () => {}, message) => {
+    if (debug) console.log('lal.api completed', message, inputObj);
     let filtered = {
       ...filter(inputObj),
       ...(debug && {
         debug: true
       })
     };
-    log(undefined, {
-      lalDebug: message,
-      inputObj,
-      filtered
-    }, debug);
     toDo(filtered);
     extra(filtered);
   };
