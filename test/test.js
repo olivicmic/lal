@@ -22,8 +22,8 @@ console.log(chalk.hex('FF00CC').bold('TEST START'));
 
 // color(shared);
 // image(shared);
-// lookupIP(shared);
+lookupIP(shared);
 // misc(shared);
-text(shared);
+// text(shared);
 // tools(shared);
 // web(shared);
