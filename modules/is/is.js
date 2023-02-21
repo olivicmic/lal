@@ -13,7 +13,7 @@ const validate = (mimetype, type) => {
 	return index >= 0 ? short[type][index] : false;
 };
 
-const is = (...a) => {
+const defined = (...a) => {
 	let onMatch;
 	let matched;
 	let match = a.find((b, i) => {
@@ -32,12 +32,11 @@ const is = (...a) => {
 const definedZero = way => way || way === 0;
 
 module.exports = {
-	default: is,
+	defined,
 	definedZero,
 	doc: mimetype => validate(mimetype, 'doc'),
 	even: input => input % 2 === 0,
 	image: mimetype => validate(mimetype, 'image'),
-	is,
 	object: item => item instanceof Object && !(item instanceof Array),
 	objectID: item => (item.match(/^[0-9a-fA-F]{24}$/) || []) .length > 0,
 	definedOr: (way, def = 0) => definedZero(way) ? way : def,
