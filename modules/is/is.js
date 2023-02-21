@@ -37,7 +37,7 @@ module.exports = {
 	doc: mimetype => validate(mimetype, 'doc'),
 	even: input => input % 2 === 0,
 	image: mimetype => validate(mimetype, 'image'),
-	object: item => item instanceof Object && !(item instanceof Array),
+	object: item => item instanceof Object && !(item instanceof Array) && !(item instanceof Date),
 	objectID: item => (item.match(/^[0-9a-fA-F]{24}$/) || []) .length > 0,
 	definedOr: (way, def = 0) => definedZero(way) ? way : def,
 	validFiles,

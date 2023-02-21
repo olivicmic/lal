@@ -1,6 +1,6 @@
 {
   "name": "lal",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "Assorted Javascript Utilities",
   "main": "dist/index.js",
   "module": "dist/index.js",

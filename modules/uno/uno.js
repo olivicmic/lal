@@ -1,6 +1,8 @@
+const is = require('../is');
+
 module.exports = (props, name = 'mono') => {
-	const objCHeck = () => (typeof props === 'object') && !(props instanceof Date) && (props !== null);
+	let isNotObj = !is.object(props);
 	let unoString;
-	if (!objCHeck()) unoString = props;
-	return { [name]: unoString, ...props };
+	if (isNotObj) unoString = props;
+	return { ...isNotObj && { [name]: unoString }, ...props };
 };
