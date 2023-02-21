@@ -61,5 +61,5 @@ typings/
 /test_images
 
 # production
-# /dist
-# /build
+/dist
+/build
