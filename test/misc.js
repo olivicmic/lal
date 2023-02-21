@@ -1,5 +1,5 @@
 module.exports = ({ expect, lal }) => {
-	describe('Testing lal.isObject', () => {
+	describe('Testing lal.is.object', () => {
 		const anObject = {
 			apple: 'one',
 			banana: 'two',
@@ -8,13 +8,13 @@ module.exports = ({ expect, lal }) => {
 		const anArray = ['one','two','three'];
 
 		it('Should return true', (done) => {
-			let checkObject = lal.isObject(anObject);
+			let checkObject = lal.is.object(anObject);
 			expect(checkObject).to.be.true;
 			console.log('Is an object? ' + checkObject);
 			done();
 		});
 		it('Should return false', (done) => {
-			let checkArray = lal.isObject(anArray);
+			let checkArray = lal.is.object(anArray);
 			expect(checkArray).to.be.false;
 			console.log('Is an object? ' + checkArray);
 			done();
@@ -35,7 +35,7 @@ module.exports = ({ expect, lal }) => {
 		it('Should take an 5-length array with 4 objects and return an object with 4 keys', (done) => {
 			let objectLength = Object.keys(objected).length;
 			console.log('object length: ' + objectLength);
-			expect(lal.isObject(objected)).to.be.true;
+			expect(lal.is.object(objected)).to.be.true;
 			expect(objectLength).to.equal(4);
 			done();
 		});

@@ -4,7 +4,6 @@ const chai = require('chai'),
 	chalk = require('chalk'),
 	color = require('./color.js'),
 	image = require('./image.js'),
-	lookupIP = require('./lookupIP.js'),
 	misc = require('./misc.js'),
 	text = require('./text.js'),
 	tools = require('./tools.js'),
@@ -20,10 +19,9 @@ const shared = {
 console.log(chalk.hex('FFBDBD').bold('LAL ▓▓▒▒░░'));
 console.log(chalk.hex('FF00CC').bold('TEST START'));
 
-// color(shared);
-// image(shared);
-lookupIP(shared);
-// misc(shared);
-// text(shared);
-// tools(shared);
-// web(shared);
+//color(shared);
+image(shared);
+misc(shared);
+text(shared);
+tools(shared);
+web(shared);

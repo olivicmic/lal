@@ -1,5 +1,4 @@
 module.exports = ({ chai, expect, lal }) => {
-	console.log('hhhhhheeee');
 	describe('Testing lal.queryString', () => {
 		let testObj = {
 			one: 'red',
@@ -23,9 +22,9 @@ module.exports = ({ chai, expect, lal }) => {
 		});
 	});
 
-	describe('Testing lal.isObjectID', () => {
-		let goodID = lal.isObjectID('61e204e57abe817981347b1c');
-		let badID = lal.isObjectID('Is a 24 character string');
+	describe('Testing lal.is.objectID', () => {
+		let goodID = lal.is.objectID('61e204e57abe817981347b1c');
+		let badID = lal.is.objectID('Is a 24 character string');
 		console.log('good id', goodID);
 		console.log('bad ID', badID);
 
@@ -38,14 +37,4 @@ module.exports = ({ chai, expect, lal }) => {
 			done();
 		});
 	});
-	/*
-	describe('Testing lal.api', () => {
-		lal.api({
-			url: 'https://api.vics.pics/v1/resources/test-collection',
-			itemNames: 'characters',
-			objectify: true,
-			onSuccess: res => console.log('🤩', res) })
-			.then(response => done())
-			.catch(errors => console.log(errors, '😡'));
-	}); */
 };

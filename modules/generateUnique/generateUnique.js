@@ -1,5 +1,5 @@
 const ipsum = require('../ipsum');
-const isEven = require('../isEven');
+const is = require('../is');
 const random = require('../random');
 
 const punctuation = () => random(13) <= 10 ? '.' : random(13) <= 11 ? '!' : '?';
@@ -23,7 +23,7 @@ const generate = ({ charCount, charSet, sentences, whiteSpace }) => {
 
 	if (Array.isArray(charSet)) {
 		for (let i = 0; i < charCount; i++) {
-			if (whiteSpace && !isEven(i)) string += ' ';
+			if (whiteSpace && !is.even(i)) string += ' ';
 			else if (sentences && whiteSpace) {
 				let [addition, newNext] = punctuate(chance - 1, i, capNext, i === charCount - 2, modString());
 				string += addition;
@@ -32,7 +32,7 @@ const generate = ({ charCount, charSet, sentences, whiteSpace }) => {
 		}
 	} else {
 		for (let i = 0; i < charCount; i++) {
-			if (whiteSpace && !isEven(i)) string += ' ';
+			if (whiteSpace && !is.even(i)) string += ' ';
 			else string += charSet.charAt(randomIndex());
 		}
 	}

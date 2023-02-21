@@ -1,5 +1,5 @@
 # Lal
-Assorted NodeJS Utilities - Readme needs to be updated for v6. Use at your own risk.
+Assorted NodeJS Utilities - Readme needs to be updated for v7. Use at your own risk.
 
 ## Installation
 
@@ -87,48 +87,6 @@ lal.generateUnique({ charCount: 30, whiteSpace: true, preset: 'lorem ipsum', sen
 lal.generateUnique({ charCount: 6, preset: 'hex' });
 
 // Will return a string like: '207e67'
-
-```
-
-### lookupIP
-`lal.lookupIP(input, output)`
-
-#### input:
-- `input.ip {string}`: IP to lookup
-- `input.host {string}`: Preferred host. options:
-	- `'ip-api'` ip-api.com (default)
-	- `'ipapi'` ipapi.co
-	- `'extreme'` extreme-ip-lookup.com
-	- `'ipinfo'` ipinfo.io
-
-#### output:
-- `err`: error callback
-- `result`: ip lookup json object. Properties vary depending on host selected.
-
-```Javascript
-lal.lookupIP({ ip: '208.80.152.201', host: 'extreme'}, (err, result) => {
-	if (err) console.log(err); // returns error details
-	console.log(result);
-});
-
-/* 
-result example:
-{ businessName: 'Wikimedia Foundation Inc.',
-  businessWebsite: '',
-  city: 'San Francisco',
-  continent: 'North America',
-  country: 'United States',
-  countryCode: 'US',
-  ipName: '',
-  ipType: 'Business',
-  isp: 'Wikimedia Foundation',
-  lat: '37.7898',
-  lon: '-122.3942',
-  org: 'Wikimedia Foundation Inc.',
-  query: '208.80.152.201',
-  region: 'California',
-  status: 'success' }
- */
 
 ```
 
@@ -404,37 +362,6 @@ lal.queryString();
 // returns ''
 
 ```
-
-### api
-
-lal.api wraps Axios alongside queryString to simplify api requests. It accepts the parameters below, as well as all stadard Axios parameters like url, data, and params. It recieves functions to run after a successful or error response, as well as a filter function to apply to a main collection.
-
-#### Usage
-```Javascript
-api('https://mysite.com/api/articles')
-	.then(response => console.log(response))
-	.catch(errors => console.log(errors));
-
-/* or */
-
-api({ 
-	url: 'https://mysite.com/api/articles',
-	params: { sortBy: '-position' },
-	onSuccess: res => console.log('fetch successful! response:', res);
-})
-	.then(response => console.log(response))
-	.catch(errors => console.log(errors));
-```
-
-#### Parameters
-- `auth (string)`: JWT access token.
-- `contentType (string)`: content type to be passed to the request header
-- `debug (boolean)`: If true request detail and success/error response are logged, additionally the property "lalDebug" will be added to the response with a true value.
-- `filter (function)`:  a [array filter function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/filter) to apply to the main collection, for example filtering authors for a set of retrieved articles.
-- `itemNames (string)`: Designate a main collection within the response object. For example if your API includes an array named 'users' you can state so here, which enables filtering. If undefined the main collection will be named 'items'.
-- `objectify (boolean)`: If true, the main collection array will be converted to an object using [lal.objector](###objector). The returned object will be empty if the original array contains no objects.
-- `onError (function)`:  A function to run when an error occurs. Recieves response error object as a callback: `const onError = (error) => console.log(error);`.
-- `onSuccess (function)`:  A function to run on a successful API request. Recieves response object as a callback: `const onSuccess = (response) => console.log(response);`.
 
 ### uno
 
