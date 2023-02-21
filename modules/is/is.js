@@ -13,13 +13,15 @@ const validate = (mimetype, type) => {
 	return index >= 0 ? short[type][index] : false;
 };
 
+const definedZero = way => way || way === 0;
+
 const defined = (...a) => {
 	let onMatch;
 	let matched;
 	let match = a.find((b, i) => {
 		if (i === 0 && b instanceof Function) {
 			onMatch = b;
-		} else if (b || b === 0) {
+		} else if (definedZero(b)) {
 			matched = true;
 			return true;
 		}
@@ -28,8 +30,6 @@ const defined = (...a) => {
 
 	return (matched && onMatch) ? onMatch(match) : match;
 };
-
-const definedZero = way => way || way === 0;
 
 module.exports = {
 	defined,

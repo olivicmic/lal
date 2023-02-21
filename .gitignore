@@ -59,3 +59,7 @@ typings/
 
 # test image folder (put your own test images here)
 /test_images
+
+# production
+# /dist
+# /build
