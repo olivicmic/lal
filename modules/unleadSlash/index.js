@@ -1,1 +1,1 @@
-export { default } from './unleadSlash';
+module.exports = require('./unleadSlash');
