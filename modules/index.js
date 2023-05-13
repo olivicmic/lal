@@ -13,5 +13,6 @@ module.exports = {
 	objectsMatch: require('./objectsMatch'),
 	queryString: require('./queryString'),
 	random: require('./random'),
+	unleadSlash: require('./unleadSlash'),
 	uno: require('./uno'),
 };
